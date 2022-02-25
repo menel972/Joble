@@ -1,9 +1,27 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import * as env from './hide-environment';
 
 export const environment = {
-  production: false
+  firebase: {
+    projectId: env.hidden.projectId,
+    appId: env.hidden.appId,
+    storageBucket: env.hidden.storageBucket,
+    locationId: env.hidden.locationId,
+    apiKey: env.hidden.apiKey,
+    authDomain: env.hidden.authDomain,
+    messagingSenderId: env.hidden.messagingSenderId,
+    measurementId: env.hidden.measurementId
+  },
+  production: false,
+  firebaseConfig : {
+    apiKey: env.hidden.apiKey,
+    authDomain: env.hidden.authDomain,
+    projectId: env.hidden.projectId,
+    storageBucket: env.hidden.storageBucket,
+    messagingSenderId: env.hidden.messagingSenderId
+  }
 };
 
 /*
