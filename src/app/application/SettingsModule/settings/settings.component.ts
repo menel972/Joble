@@ -1,3 +1,4 @@
+import { VersionService } from './../../../shared/version.service';
 import { icon } from './../../../shared/lexique';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,9 @@ export class SettingsComponent implements OnInit {
   // ENUM ICON
   icon = icon;
 
-  constructor() { }
+  version = this.Version.version;
+
+  constructor(private Version: VersionService) { }
 
   ngOnInit(): void {
   }

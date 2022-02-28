@@ -5,10 +5,13 @@ import { AuthComponent } from './AuthComponent/auth.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 
 const ToLogin = () => redirectUnauthorizedTo(['connexion']);
+const ToApp = () => redirectUnauthorizedTo(['app']);
 
 const routes: Routes = [
   {path: '', redirectTo: 'connexion', pathMatch: 'full'},
+
   {path: 'connexion', component: AuthComponent},
+
   {path: 'app',
   component: ApplicationComponent,
   canActivate: [AngularFireAuthGuard], data: { authGuardPipe: ToLogin },

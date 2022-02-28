@@ -1,5 +1,3 @@
-import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -15,9 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private validator: ValidatorsService,
-    private snackBar: MatSnackBar,
-    private translate: TranslateService
+    private validator: ValidatorsService
     ) { }
 
 // ENUM ICON

@@ -15,7 +15,6 @@ export class AuthComponent implements OnInit {
   bool = false;
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(console.log);
     this.route.queryParams.subscribe(params => {
       if (params['mode']) {
         this.code = params['oobCode'];

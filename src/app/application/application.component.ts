@@ -1,3 +1,4 @@
+import { VersionService } from './../shared/version.service';
 import { AuthService } from 'src/app/core/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/core/user.service';
@@ -31,8 +32,8 @@ import { NavigationEnd, Router } from '@angular/router';
 export class ApplicationComponent implements OnInit {
 
   // VERSION
-  version = 0.7;
-  correctif = .0;
+  version = this.Version.version;
+  correctif = this.Version.correctif;
 
 user$ = this.user.currentUser$;
 
@@ -40,7 +41,8 @@ constructor(
   private translate: TranslateService,
   private router: Router,
   private user: UserService,
-  private dialog: MatDialog
+  private dialog: MatDialog,
+  private Version: VersionService
   ) {
   this.router.events.subscribe( (event) => {
     if (event instanceof NavigationEnd) {
@@ -106,7 +108,9 @@ export class LogoutDialog implements OnInit {
   icon = icon;
 
   constructor(
-    private dialogRef: MatDialogRef<LogoutDialog>, private auth: AuthService) {}
+    private dialogRef: MatDialogRef<LogoutDialog>,
+    private auth: AuthService
+    ) {}
 
   ngOnInit(): void {
   }
