@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // NGX TRANSLATE
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -37,6 +38,7 @@ import { ApplicationComponent, LogoutDialog } from './application/application.co
 import { AuthComponent } from './AuthComponent/auth.component';
 import { LoginComponent } from './AuthComponent/login/login.component';
 import { RegisterComponent } from './AuthComponent/register/register.component';
+import { ResetComponent } from './AuthComponent/reset/reset.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -49,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LogoutDialog,
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
@@ -77,7 +80,8 @@ MatOptionModule,
 MatCardModule,
 MatButtonModule,
 MatDatepickerModule,
-MatDialogModule
+MatDialogModule,
+MatTabsModule
 ],
   providers: [],
   bootstrap: [AppComponent]
