@@ -1,0 +1,101 @@
+<div id='container' class='flex-row'>
+
+  <!-- SIDE BAR  -->
+
+  <section id='sidenav' [@sidenav]='state' #sidenav>
+    <div>
+      <section class='line loin'>
+        <h5 *ngIf="state == 'expend'">{{'home' | translate }}</h5>
+        <mat-icon>{{icon.home}}</mat-icon>
+      </section>
+
+      <section class='loin' routerLink="/app/dashboard" routerLinkActive="active">
+        <h5 *ngIf="state == 'expend'">{{'dashboard' | translate }}</h5>
+        <mat-icon>{{icon.dashboard}}</mat-icon>
+      </section>
+
+      <ng-container *ngIf="version > 1">
+        <section class='line'>
+          <h5 *ngIf="state == 'expend'">{{'fichiers' | translate}}</h5>
+          <mat-icon>{{ icon.file}}</mat-icon>
+        </section>
+
+        <section>
+          <h5 *ngIf="state == 'expend'">{{'stats' | translate}}</h5>
+          <mat-icon>{{ icon.stats}}</mat-icon>
+        </section>
+
+        <section>
+          <h5 *ngIf="state == 'expend'">{{'agenda' | translate}}</h5>
+          <mat-icon>{{ icon.agenda}}</mat-icon>
+        </section>
+
+        <section>
+          <h5 *ngIf="state == 'expend'">{{'share' | translate}}</h5>
+          <mat-icon>{{ icon.share}}</mat-icon>
+        </section>
+      </ng-container>
+
+    </div>
+
+    <!-- VERSION -->
+    <div>
+      <section>
+        <p>{{ state === 'expend' ? ('version' | translate ) + ' : ' + version + '.' + correctif : version}}</p>
+      </section>
+    </div>
+  </section>
+
+
+
+  <section class="flex-fill">
+
+    <!-- TOOL BAR -->
+
+    <mat-toolbar color="basic">
+
+      <!-- PAGE NAME -->
+
+      <section>
+        <article>
+          <mat-icon (click)='state == "retract" ? state = "expend" : state = "retract"' #toggle>{{icon.menu}}</mat-icon>
+          <h5>{{ route |translate | uppercase}}</h5>
+        </article>
+      </section>
+
+      <!-- LINKS -->
+
+      <section>
+        <article>
+          <mat-icon>{{icon.earth}}</mat-icon>
+
+          <mat-form-field appearance="legacy">
+            <mat-select #langSelect (valueChange)="changeLang(langSelect.value)" [(value)]='selectedLanguage'>
+              <mat-option [value]="option.value" *ngFor="let option of language">{{ option.value }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </article>
+
+        <article>
+          <mat-icon>{{icon.notif}}</mat-icon>
+        </article>
+
+        <article *ngIf="user$ |async as user" (click)='openLogoutDialog()'>
+          <mat-icon>{{icon.person}}</mat-icon>
+          <p>{{user.displayName ? (user.displayName | titlecase) : user.firstName|titlecase}}</p>
+        </article>
+
+        <article>
+          <mat-icon routerLink="/app/settings">{{icon.setting}}</mat-icon>
+        </article>
+      </section>
+
+    </mat-toolbar>
+
+    <!-- TABLE - DETAILS - CHARTS - CALENDAR - CV -->
+
+    <router-outlet></router-outlet>
+  </section>
+
+</div>

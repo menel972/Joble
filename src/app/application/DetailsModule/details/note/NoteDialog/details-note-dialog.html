@@ -1,0 +1,29 @@
+
+<div class="container">
+
+  <!-- TITLE -->
+  <article class='flex-row just-btwn align-center'>
+    <article>
+      <h2>{{'info' | translate |uppercase}} {{'addNote' |translate}}</h2>
+    </article>
+    <article>
+      <mat-icon (click)='Close()'>{{icon.statusNo}}</mat-icon>
+    </article>
+  </article>
+
+
+  <!-- EDIT NOTE FORM -->
+  <form [formGroup]='noteForm' (ngSubmit)="editNote()">
+    <mat-form-field appearance="fill">
+      <mat-label [class]='{validate : noteForm.value.note}'> <mat-icon >{{icon.note}}</mat-icon>{{'JOB.note' | translate | titlecase}}</mat-label>
+<textarea matInput formControlName='note'></textarea>
+    </mat-form-field>
+
+<article>
+  <button mat-button class='edit'>{{'BUTTON.edit' | translate | titlecase}}  <mat-icon>{{icon.edit}}</mat-icon></button>
+</article>
+    </form>
+
+
+
+</div>

@@ -1,0 +1,15 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mat-card {
+    height: 80%;
+    width: 45%;
+    box-sizing: border-box;
+    padding: 2vh 2vw;
+  }
+}

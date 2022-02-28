@@ -1,0 +1,124 @@
+@import 'src/libs/variables';
+
+::ng-deep .mat-dialog-container {
+  padding: 3vh 3vw;
+}
+
+// SNACK-BAR
+::ng-deep .mat-snack-bar-container {
+  background-color: $Green700;
+  color: $White;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  // TITLE
+  article {
+    #close {
+      font-size: 2rem;
+      margin-left: 1vw;
+      vertical-align: super;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $Red300;
+        font-size: 2.5rem;
+      }
+    }
+
+    #back {
+      font-size: 3.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $Green700;
+      }
+    }
+  }
+
+  // JOB CARD LIST
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  li {
+    flex: 45%;
+    margin: 2vh;
+    max-width: 22vw;
+
+    .mat-card {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      transition: 0.3s;
+
+      .mat-icon {
+        font-size: 2rem;
+        vertical-align: middle;
+      }
+
+      #edit {
+        color: $Green200;
+        transition: 0.3s;
+      }
+
+      &:hover {
+        background-color: $LightGreen;
+
+        #edit {
+          color: $Green700;
+          font-size: 2.8rem;
+        }
+      }
+      article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+        &:first-of-type {
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+
+  /* FORM */
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5vh 2vw;
+
+    // INPUTS
+
+    section {
+      display: flex;
+      flex-direction: column;
+      flex: 42%;
+
+      &:first-of-type {
+        margin-right: 3vw;
+        margin-bottom: 2vh;
+      }
+
+      .mat-icon {
+        font-size: 1.8rem;
+        margin-right: 0.5vw;
+        vertical-align: middle;
+      }
+
+      .validate {
+        color: $Indigo400;
+      }
+    }
+  }
+}
