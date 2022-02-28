@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { UserService } from 'src/app/core/user.service';
 
 @Component({
   selector: 'app-table',
@@ -14,7 +12,7 @@ import { UserService } from 'src/app/core/user.service';
 })
 export class TableComponent implements OnInit {
 
-  constructor( private crud: CRUDService, private afAuth: AngularFireAuth, private user: UserService) { }
+  constructor( private crud: CRUDService) { }
 
   // ENUM ICON
   icon = icon;
@@ -43,9 +41,6 @@ export class TableComponent implements OnInit {
   form !: FormGroup;
 
   ngOnInit(): void {
-    console.log('test');
-    this.afAuth.user.subscribe(console.log );
-
     this.crud.readAllJobs$().subscribe(data => this.dataSource = data);
 
     this.form = new FormGroup({

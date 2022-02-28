@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user.getCurrentUser$();
-    this.user.getCurrentUser$().subscribe(user => console.log(user.displayName));
 
     this.profileForm = new FormGroup({
       displayName: new FormControl(),
