@@ -1,3 +1,4 @@
+import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./title.component.scss']
 })
 export class TitleComponent implements OnInit {
+
+  // ENUM ICON
+  icon = icon;
 
   constructor() { }
 

@@ -1,0 +1,28 @@
+#head {
+  height: 20vh;
+  padding: 2vh 2vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+#text {
+  height: 30vh;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#bottom {
+  height: 40vh;
+  padding: 2vh 2vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+
+  .quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
