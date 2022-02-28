@@ -21,7 +21,7 @@
       </mat-tab>
 
       <!-- SUBSCRIPTION -->
-      <mat-tab>
+      <mat-tab [disabled]="version < 1">
         <ng-template mat-tab-label>
           <mat-icon>{{icon.money}}</mat-icon>
           {{'subscription' | translate}}
