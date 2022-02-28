@@ -1,3 +1,4 @@
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ApplicationComponent } from './application/application.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,9 @@ const ToLogin = () => redirectUnauthorizedTo(['connexion']);
 const ToApp = () => redirectUnauthorizedTo(['app']);
 
 const routes: Routes = [
-  {path: '', redirectTo: 'connexion', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+
+  {path: 'home', loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule) },
 
   {path: 'connexion', component: AuthComponent},
 
@@ -20,7 +23,8 @@ const routes: Routes = [
     { path: 'dashboard', loadChildren: () => import('./application/TableModule/table.module').then(m => m.TableModule) },
     { path: 'details/:name/:id', loadChildren: () => import('./application/DetailsModule/details.module').then(m => m.DetailsModule) },
     { path: 'settings', loadChildren: () => import('./application/SettingsModule/settings.module').then(m => m.SettingsModule)}
-  ]}
+  ]},
+  { path: 'landingPage', loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule) }
 ];
 
 @NgModule({
