@@ -21,6 +21,11 @@
         </section>
 
         <section>
+          <h5 *ngIf="state == 'expend'">Blog</h5>
+          <mat-icon>{{ icon.blog}}</mat-icon>
+        </section>
+
+        <section>
           <h5 *ngIf="state == 'expend'">{{'stats' | translate}}</h5>
           <mat-icon>{{ icon.stats}}</mat-icon>
         </section>

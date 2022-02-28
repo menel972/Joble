@@ -42,5 +42,6 @@ export enum icon {
   money = 'account_balance_wallet',
   password = 'lock_open',
   userMail = 'alternate_email',
-  logout = 'exit_to_app'
+  logout = 'exit_to_app',
+  blog = 'format_color_text'
 }
