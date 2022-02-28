@@ -1,0 +1,21 @@
+@import 'src/libs/variables';
+
+.container {
+  height: 95vh;
+  padding: 4vh 5vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+
+  .mat-card {
+    width: 100%;
+
+    ::ng-deep .mat-tab-label {
+      margin: 0vh 2vw;
+    }
+
+    ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+      background-color: $Indigo400;
+    }
+  }
+}

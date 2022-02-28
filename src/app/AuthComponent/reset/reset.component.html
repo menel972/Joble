@@ -1,0 +1,27 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>{{icon.password}}</mat-icon>
+      {{'BUTTON.resetMDP' | translate}}
+    </ng-template>
+
+    <form [formGroup]="resetForm" (ngSubmit)="reset()">
+
+      <mat-form-field>
+        <mat-label>{{'USER.newMDP' | translate}}</mat-label>
+        <input matInput formControlName='password' type="password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{'USER.confirmMDP' | translate}}</mat-label>
+        <input matInput formControlName='confirmPassword' type="password">
+      </mat-form-field>
+
+      <article>
+        <button mat-button class='delete' [disabled]="resetForm.invalid">{{'BUTTON.resetMDP'
+          | translate}}</button>
+      </article>
+
+    </form>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,291 @@
+// DIMENSIONS
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+td,
+th,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+select {
+  padding: 0;
+  margin: 0;
+}
+
+// TEXTES
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+label,
+input,
+li,
+.btn,
+th,
+td {
+  font-weight: normal;
+}
+
+// LIEN
+
+a {
+  text-decoration: none;
+}
+
+// LISTES
+
+ul {
+  list-style: none;
+}
+
+// Media
+//
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+// Iframe
+
+iframe {
+  border: 0;
+}
+
+// Table
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// FLEXBOX
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
+
+.flex-90 {
+  flex: 1 1 90%;
+}
+
+.flex-80 {
+  flex: 1 1 80%;
+}
+
+.flex-70 {
+  flex: 1 1 70%;
+}
+
+.flex-60 {
+  flex: 1 1 60%;
+}
+
+.flex-50 {
+  flex: 1 1 50%;
+}
+
+.flex-40 {
+  flex: 1 1 40%;
+}
+
+.flex-30 {
+  flex: 1 1 30%;
+}
+
+.flex-20 {
+  flex: 1 1 20%;
+}
+
+.flex-10 {
+  flex: 1 1 10%;
+}
+
+.just-center {
+  justify-content: center;
+}
+
+.just-btwn {
+  justify-content: space-between;
+}
+
+.just-arnd {
+  justify-content: space-around;
+}
+
+.just-evn {
+  justify-content: space-evenly;
+}
+
+.just-start {
+  justify-content: flex-start;
+}
+
+.just-end {
+  justify-content: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+// PADDING - MARGIN
+
+.p2 {
+  padding: 2vh;
+}
+
+.pt2 {
+  padding-top: 2vh;
+}
+
+.pr2 {
+  padding-right: 2vh;
+}
+
+.pl2 {
+  padding-left: 2vh;
+}
+
+.pb2 {
+  padding-bottom: 2vh;
+}
+
+.p5 {
+  padding: 5vh;
+}
+
+.pt5 {
+  padding-top: 5vh;
+}
+
+.pr5 {
+  padding-right: 5vh;
+}
+
+.pl5 {
+  padding-left: 5vh;
+}
+
+.pb5 {
+  padding-bottom: 5vh;
+}
+
+.m2 {
+  margin: 2vh;
+}
+
+.mt2 {
+  margin-top: 2vh;
+}
+
+.mr2 {
+  margin-right: 2vh;
+}
+
+.mb2 {
+  margin-bottom: 2vh;
+}
+
+.ml2 {
+  margin-left: 2vh;
+}
+
+.m5 {
+  margin: 5vh;
+}
+
+.mt5 {
+  margin-top: 5vh;
+}
+
+.mr5 {
+  margin-right: 5vh;
+}
+
+.mb5 {
+  margin-bottom: 5vh;
+}
+
+.ml5 {
+  margin-left: 5vh;
+}
+
+// DEBUG
+
+.d1 {
+  border: 1px solid red;
+}
+
+.d2 {
+  border: 1px solid pink;
+}
+
+.d3 {
+  border: 1px solid blue;
+}
+
+.d4 {
+  border: 1px solid green;
+}
+
+// LIENS
+
+.linked {
+  cursor: pointer;
+}

@@ -1,0 +1,42 @@
+<div class="container">
+
+  <mat-tab-group>
+
+    <!-- CHANGE PASSWORD -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>{{icon.password}}</mat-icon>
+        {{'BUTTON.resetMDP' | translate}}
+      </ng-template>
+      <ng-container *ngIf="user$ | async as user">
+        <form [formGroup]="accountForm" (ngSubmit)="resetPassword()">
+
+          <mat-form-field>
+            <mat-label>{{'JOB.mail' | translate}}</mat-label>
+            <input matInput formControlName='mail' type="mail">
+          </mat-form-field>
+
+          <article>
+            <button mat-button class='delete' [disabled]="accountForm.value.mail !== user.mail">{{'BUTTON.resetMDP'
+              | translate}}</button>
+          </article>
+
+        </form>
+      </ng-container>
+    </mat-tab>
+
+    <!-- LOG OUT -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>{{icon.logout}}</mat-icon>
+        {{'BUTTON.logout' | translate}}
+      </ng-template>
+      <section>
+        <h2>{{'logoutMessage' | translate}}</h2>
+        <button mat-button class='delete' (click)='logout()'>{{'BUTTON.logout' | translate}} <mat-icon>{{icon.logout}}
+          </mat-icon></button>
+      </section>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

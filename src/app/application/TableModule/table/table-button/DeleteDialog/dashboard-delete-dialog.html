@@ -1,0 +1,51 @@
+<div class="container">
+
+  <!-- TITLE -->
+
+  <article class='flex-row just-btwn align-center mb2'>
+    <article>
+      <h2>{{'dashboard' | translate |uppercase}} {{'deleteTitle' |translate}}</h2>
+    </article>
+    <article>
+      <p><mat-icon id='back' (click)='Back()' *ngIf="Window">{{icon.back}}</mat-icon>
+      <mat-icon id='close' (click)='Close()'>{{icon.statusNo}}</mat-icon></p>
+    </article>
+  </article>
+
+  <ng-container *ngIf="dataSource$ | async as Jobs">
+    <!--SHOW ALL JOBS -->
+    <ul *ngIf="!Window">
+      <li *ngFor="let job of Jobs" (click)='changeWindow(job)'><mat-card>
+        <article>
+          <!-- FAV + NAME -->
+          <h4> <mat-icon [class]='{trueColor : job.favorite, falseColor : !job.favorite}'>{{ job.favorite ? icon.yesFav : icon.noFav}}</mat-icon> {{job.name | titlecase}}</h4>
+
+          <!-- STATUS -->
+          <p class='history' *ngIf="job.status == 'history'">{{'JOB.DESCRIPTION.statusWaitLong' | translate}}</p>
+          <p class='send' *ngIf="job.status == 'send'">{{'JOB.DESCRIPTION.statusSendLong' | translate}}
+          </p>
+          <p class='done' *ngIf="job.status == 'done'">{{'JOB.DESCRIPTION.statusYesLong' | translate}}</p>
+          <p class='clear' *ngIf="job.status == 'clear'">{{'JOB.DESCRIPTION.statusNoLong' | translate}}</p>
+        </article>
+
+        <article>
+          <!-- TRASH -->
+          <mat-icon id='trash'>{{icon.delete}}</mat-icon>
+
+        </article>
+      </mat-card>
+    </li>
+  </ul>
+
+
+  <!-- DELETE MESSAGE -->
+  <ng-container *ngIf="selectedJob$ | async as selectedJob">
+  <section *ngIf="Window">
+      <h2>{{'BUTTON.deleteMsg1' | translate}} <span>{{selectedJob.name | titlecase}}</span></h2>
+      <h2>{{'BUTTON.deleteMsg2' | translate}}</h2>
+      <button mat-button class='delete' (click)="deleteJob(selectedJob.id!)">{{'BUTTON.delete' | translate}} <mat-icon>{{icon.delete}}</mat-icon></button>
+    </section>
+    </ng-container>
+  </ng-container>
+
+  </div>

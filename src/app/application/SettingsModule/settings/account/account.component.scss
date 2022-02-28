@@ -1,0 +1,49 @@
+@import 'src/libs/variables';
+
+// SNACK-BAR
+::ng-deep .mat-snack-bar-container {
+  background-color: $Red300;
+  color: $White;
+}
+
+.container {
+  height: 75vh;
+  margin-top: 2vh;
+  padding-top: 2vh;
+  display: flex;
+  justify-content: center;
+
+  form {
+    width: 100%;
+    padding: 0vh 2vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    .mat-form-field {
+      margin: 2vh 0vw;
+      &:first-of-type {
+        margin-top: 10vh;
+      }
+    }
+
+    article {
+      display: flex;
+      justify-content: center;
+      margin-top: 4vh;
+    }
+  }
+
+  section {
+    height: 60vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mat-button {
+      margin-top: 3vh;
+    }
+  }
+}

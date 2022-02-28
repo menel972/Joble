@@ -1,0 +1,22 @@
+<div class="container">
+
+
+  <mat-card>
+    <ng-container [ngSwitch]="bool">
+      <mat-tab-group *ngSwitchCase="false">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            {{'signIn' | translate | titlecase}}
+          </ng-template>
+          <app-login></app-login>
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>{{'signUp' | translate | titlecase}}</ng-template>
+          <app-register></app-register>
+        </mat-tab>
+      </mat-tab-group>
+      <app-reset *ngSwitchCase="true" [mode]='mode' [code]='code'></app-reset>
+    </ng-container>
+  </mat-card>
+</div>

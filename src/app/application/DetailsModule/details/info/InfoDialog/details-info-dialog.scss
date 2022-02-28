@@ -1,0 +1,59 @@
+@import 'src/libs/variables';
+
+::ng-deep .mat-dialog-container {
+  padding: 5vh 4vw;
+}
+
+// SNACK-BAR
+::ng-deep .mat-snack-bar-container {
+  background-color: $Green700;
+  color: $White;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  // TITLE
+  article .mat-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      color: $Red300;
+    }
+  }
+
+  /* FORM */
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5vh 2vw;
+
+    // INPUTS
+
+    section {
+      display: flex;
+      flex-direction: column;
+      flex: 42%;
+
+      &:first-of-type {
+        margin-right: 3vw;
+        margin-bottom: 2vh;
+      }
+
+      .mat-icon {
+        font-size: 1.8rem;
+        margin-right: 0.5vw;
+        vertical-align: middle;
+      }
+
+      .validate {
+        color: $Indigo400;
+      }
+    }
+  }
+}

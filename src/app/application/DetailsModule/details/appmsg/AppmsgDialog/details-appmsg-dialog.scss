@@ -1,0 +1,39 @@
+@import 'src/libs/variables';
+
+::ng-deep .mat-dialog-container {
+  padding: 5vh 4vw;
+}
+
+// SNACK-BAR
+::ng-deep .mat-snack-bar-container {
+  background-color: $Green700;
+  color: $White;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+
+  // TITLE
+  article .mat-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      color: $Red300;
+    }
+  }
+
+  /* FORM */
+
+  form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 5vh 2vw;
+
+    textarea {
+      height: 30vh;
+    }
+  }
+}

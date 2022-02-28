@@ -1,0 +1,41 @@
+{
+  "editor.insertSpaces": false,
+  "editor.wordWrap": "bounded",
+  "editor.cursorBlinking": "smooth",
+  "editor.formatOnSave": true,
+  "workbench.preferredHighContrastColorTheme": "Default Dark+",
+  "workbench.iconTheme": "material-icon-theme",
+  "terminal.external.windowsExec": "C:\\\\Program Files\\\\Git\\\\bin\\\\bash.exe",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "editor.fontFamily": "calibri, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.useTabs": true,
+  "json.maxItemsComputed": 50000,
+  "workbench.colorTheme": "Angular Dark Theme",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "prettier.singleQuote": true,
+  "scssFormatter.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "tslint.jsEnable": true,
+  "tslint.ignoreDefinitionFiles": true,
+  "tslint.suppressWhileTypeErrorsPresent": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.locale": "fr",
+  "tslint.autoFixOnSave": true
+}
