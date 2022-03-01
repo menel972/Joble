@@ -3,8 +3,14 @@
   <!-- SIDE BAR  -->
 
   <section id='sidenav' [@sidenav]='state' #sidenav>
+
+    <article class='logo'>
+      <img [src]="state == 'expend' ? 'assets/jobleLogoBlanc.svg' : 'assets/jobleLogoNomBlanc.svg'" alt="logo"
+        [@logo]='state'>
+    </article>
+
     <div>
-      <section class='line loin'>
+      <section class=' line loin'>
         <h5 *ngIf="state == 'expend'">{{'home' | translate }}</h5>
         <mat-icon>{{icon.home}}</mat-icon>
       </section>
@@ -44,7 +50,7 @@
     </div>
 
     <!-- VERSION -->
-    <div>
+    <div id='version'>
       <section>
         <p>{{ state === 'expend' ? ('version' | translate ) + ' : ' + version + '.' + correctif : version}}</p>
       </section>
