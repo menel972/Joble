@@ -1,3 +1,4 @@
+import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoComponent implements OnInit {
 
+  // ENUM ICON
+  icon = icon;
+
+  select = 1;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

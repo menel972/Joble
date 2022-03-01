@@ -49,12 +49,13 @@
   h2 {
     &:last-of-type {
       margin-top: 5vh;
+      font-weight: 600;
     }
   }
 }
 
 #bottom {
-  height: 44vh;
+  height: 45vh;
   padding: 2vh 7vw;
   box-sizing: border-box;
   display: flex;

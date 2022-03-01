@@ -5,8 +5,8 @@
     <img src="assets/img/jobleLogoBleu.svg" alt="logo">
   </article>
   <article id='btn'>
-    <button mat-button class='add'>{{'TITLE.try' | translate}}</button>
-    <button mat-button class='outlined'>
+    <button mat-button class='add' routerLink="/connexion">{{'TITLE.try' | translate}}</button>
+    <button mat-button routerLink="/app">
       <mat-icon>{{icon.person}}</mat-icon>{{'signIn' | translate}}
     </button>
 
@@ -38,7 +38,7 @@
   <img src="assets/img/jobleIlluFemme.svg" alt="illu_femme">
   <article class="quote">
     <q>{{'TITLE.quote' | translate}}</q>
-    <button mat-button class="add">{{'BUTTON.register' | translate}}</button>
+    <button mat-button class="add" routerLink="/connexion">{{'BUTTON.register' | translate}}</button>
   </article>
 
 </section>

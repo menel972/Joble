@@ -1,3 +1,4 @@
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  contactForm !: FormGroup;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.contactForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      mail: new FormControl('', [Validators.required, Validators.email])
+    });
   }
+
+  submit(): void {}
 
 }

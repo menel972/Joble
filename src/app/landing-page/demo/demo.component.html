@@ -1,1 +1,65 @@
-<p>demo works!</p>
+<div class="container">
+
+  <!-- TEXT -->
+  <section id='text'>
+    <h2>{{'DEMO.text1' | translate}}</h2>
+    <h3>{{'DEMO.text2' | translate}}</h3>
+    <ul>
+      <!-- Track, Plan, Organize -->
+      <li [class]='{liSelect: select === 1}' (click)="select = 1">
+        <article>
+          <img src="assets/img/jobleLogoTableauBleu.svg" alt="logo tableau">
+        </article>
+        <article>
+          <span class='blue'>{{'DEMO.li1Blue' | translate}}</span>
+          {{'DEMO.li1' | translate}}
+        </article>
+      </li>
+
+      <!-- Add, Modify, Delete -->
+      <li [class]='{liSelect: select === 2}' (click)="select = 2">
+        <article>
+          <mat-icon class='blue'>{{icon.add}}</mat-icon>
+          <mat-icon class='green'>{{icon.edit}}</mat-icon>
+          <mat-icon class='red'>{{icon.delete}}</mat-icon>
+        </article>
+        <article>
+          <span class='blue'>{{'DEMO.li2Blue' | translate}}</span>
+          {{'DEMO.li2' | translate}}
+        </article>
+      </li>
+
+      <!-- Create Detailed Sheets -->
+      <li [class]='{liSelect: select === 3}' (click)="select = 3">
+        <article>
+          <mat-icon class='blue'>{{icon.touch}}</mat-icon>
+        </article>
+        <article>
+          <span class='blue'>{{'DEMO.li3Blue' | translate}}</span>
+          {{'DEMO.li3' | translate}}
+        </article>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ILLU -->
+  <section id='illu'>
+    <article>
+      <!-- BOARD -->
+      <img src="assets/img/demoTableau.svg" alt="tableau" *ngIf="select === 1">
+
+      <!-- FORMS -->
+      <img src="assets/img/demoForms.svg" alt="formulaire" *ngIf="select === 2">
+
+      <!-- DETAILED -->
+      <img src="assets/img/demoInfo.svg" alt="info" *ngIf="select === 3">
+    </article>
+
+    <article>
+      <h5 *ngIf="select === 1">{{'DEMO.tableau' | translate}}</h5>
+      <h5 *ngIf="select === 2">{{'DEMO.forms' | translate}}</h5>
+      <h5 *ngIf="select === 3">{{'DEMO.info' | translate}}</h5>
+    </article>
+  </section>
+
+</div>
