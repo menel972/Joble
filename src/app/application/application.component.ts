@@ -28,11 +28,13 @@ import { NavigationEnd, Router } from '@angular/router';
   ]),
   trigger('logo', [
     state('retract', style({
-      width: '3vw'
+      width: '3vw',
+      paddingRight: '0.3vw'
     })
     ),
     state('expend', style({
-      width: '10vw'
+      width: '10vw',
+      paddingRight: '1vw'
     })),
     transition('retract => expend', animate(300)),
     transition('expend => retract', animate(200))
