@@ -116,5 +116,12 @@
   "FILTER": {
     "text": "Filtré par nom d'entreprise...",
     "error": "Aucune entreprise ne colle à  :"
+  },
+
+  "TITLE": {
+    "text1": "La recherche d'un employeur est un passage obligatoire pour la plupart d'entre nous. Et si cette étape peut s'avérer longue, éprouvante et parfois démoralisante, elle n'a pas en plus à être compliquée.",
+    "text2": "Chez JOBLE, nous avons développé le tableau qui simplifie votre recherche d'emploi !",
+    "quote":  "Qui a dit qu'être organisé.e ne pouvait pas être simple ?",
+    "try": "Essayer Joble"
   }
 }

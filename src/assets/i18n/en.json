@@ -116,5 +116,12 @@
   "FILTER": {
     "text": "Filtered by company name...",
     "error": "No matching company :"
+  },
+
+  "TITLE": {
+    "text1": "Finding an employer is an obligatory step for most of us. And if this step can be long, stressful and sometimes demoralizing, it does not have to be complicated..",
+    "text2": "With JOBLE, we have developed the table that simplifies your job search!",
+    "quote":  "Who said being organized couldn't be easy?",
+    "try": "Try Joble"
   }
 }
