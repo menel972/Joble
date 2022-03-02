@@ -1,0 +1,32 @@
+<div class="container">
+  <section>
+    <article>
+      <h2>{{'FOOTER.text1' | translate}}</h2>
+      <h3>{{'FOOTER.text2' | translate}}</h3>
+
+      <form [formGroup]="contactForm" (ngSubmit)='submit()'>
+        <mat-form-field appearance="fill">
+          <mat-label>{{'USER.firstName' | translate}}</mat-label>
+          <input matInput type="text" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{'JOB.mail' | translate}}</mat-label>
+          <input matInput type="mail" formControlName="mail">
+        </mat-form-field>
+        <article>
+          <button mat-button class="add" [disabled]="contactForm.invalid">{{'BUTTON.contact' | translate}}</button>
+        </article>
+      </form>
+    </article>
+
+
+    <article>
+      <img src="assets/img/jobleIlluHomme.svg" alt="illu_homme">
+    </article>
+  </section>
+
+  <section>
+    <q>{{'TITLE.quote' | translate}}</q>
+  </section>
+</div>

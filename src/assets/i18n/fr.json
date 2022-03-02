@@ -110,11 +110,39 @@
     "login": "Consulter mon tableau !",
     "logout": "Déconnexion",
     "register": "Commencer mon tableau !",
-    "resetMDP": "Réinitialiser le mot de passe"
+    "resetMDP": "Réinitialiser le mot de passe",
+    "contact": "Je reçois des nouvelles de JOBLE"
   },
 
   "FILTER": {
     "text": "Filtré par nom d'entreprise...",
     "error": "Aucune entreprise ne colle à  :"
+  },
+
+  "TITLE": {
+    "text1": "La recherche d'un employeur est un passage obligatoire pour la plupart d'entre nous. Et si cette étape peut s'avérer longue, éprouvante et parfois démoralisante, elle n'a pas en plus à être compliquée.",
+    "text2": "Avec JOBLE, nous avons développé le tableau qui simplifie votre recherche d'emploi !",
+    "quote":  "Qui a dit qu'être organisé.e ne pouvait pas être simple ?",
+    "try": "Essayer JOBLE"
+  },
+
+  "DEMO": {
+    "text1": "JOBLE, qu'est-ce que c'est ?",
+    "text2": "Mettez de l'ordre dans votre recherche d'emploi !",
+    "li1Blue": "Suivez, plannifiez et organisez",
+    "li1": "les offres qui vous intéressent et vos candidatures en cours.",
+    "li2Blue": "Ajoutez, modifiez et supprimez",
+    "li2": "les entreprises de votre tableau.",
+    "li3Blue": "Constituez des fiches détaillées",
+    "li3": "pour les entreprises qui vous intéressent.",
+    "tableau": "Un tableau sur mesure pour organiser vos recherches...",
+    "forms": "Des formulaires complets à remplir sans prise de tête...",
+    "info": "Une vue élégante pour chaque entreprise..."
+  },
+
+  "FOOTER": {
+    "text1": "On veut rester en contact avec toi !",
+    "text2": "Des nouvelles régulières et des conseils pour réussir ta recherche d'emploi :"
+
   }
 }

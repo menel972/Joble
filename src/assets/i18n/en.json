@@ -110,11 +110,39 @@
     "login": "See my board !",
     "logout": "Log out",
     "register": "Start a new board !",
-    "resetMDP": "Password reset"
+    "resetMDP": "Password reset",
+    "contact": "I receive news from JOBLE"
   },
 
   "FILTER": {
     "text": "Filtered by company name...",
     "error": "No matching company :"
+  },
+
+  "TITLE": {
+    "text1": "Job seeking is a mandatory step for most of us. Although this stage might reveal to be tedious, exhausting and disheartening, it shouldn't have to be complicate to perform.",
+    "text2": "With JOBLE, we crafted a table that make your job research simplier !",
+    "quote":  "Who said being organized couldn't be easy?",
+    "try": "Try JOBLE"
+  },
+
+  "DEMO": {
+    "text1": "What is JOBLE ?",
+    "text2": "Get your job search in order !",
+    "li1Blue": "Track, plan and organize",
+    "li1": "offers that interest you and your current applications.",
+    "li2Blue": "Add, modify and delete",
+    "li2": "companies in your board.",
+    "li3Blue": "Create detailed sheets",
+    "li3": "for companies that interest you.",
+    "tableau": "A tailor-made table to organize your research....",
+    "forms": "Complete fillable forms without hassle..",
+    "info": "A stylish view for every company..."
+  },
+
+  "FOOTER": {
+    "text1": "We want to stay in touch with you !",
+    "text2": "Regular news and tips for a successful job search :"
+
   }
 }

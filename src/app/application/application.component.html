@@ -10,7 +10,8 @@
     </article>
 
     <div>
-      <section class=' line loin'>
+      <section class='line loin' routerLink="/home">
+
         <h5 *ngIf="state == 'expend'">{{'home' | translate }}</h5>
         <mat-icon>{{icon.home}}</mat-icon>
       </section>

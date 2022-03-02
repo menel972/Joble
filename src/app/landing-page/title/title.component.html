@@ -1,0 +1,44 @@
+<!-- HEAD -->
+<section id='head'>
+
+  <article>
+    <img src="assets/img/jobleLogoBleu.svg" alt="logo">
+  </article>
+  <article id='btn'>
+    <button mat-button class='add' routerLink="/connexion">{{'TITLE.try' | translate}}</button>
+    <button mat-button routerLink="/app">
+      <mat-icon>{{icon.person}}</mat-icon>{{'signIn' | translate}}
+    </button>
+
+    <article id='lang'>
+      <mat-icon>{{icon.earth}}</mat-icon>
+
+      <mat-form-field appearance="legacy">
+        <mat-select #langSelect (valueChange)="changeLang(langSelect.value)" [(value)]='selectedLanguage'>
+          <mat-option [value]="option.value" *ngFor="let option of language">{{ option.value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </article>
+  </article>
+
+</section>
+
+<!-- TEXT -->
+<section id='text'>
+
+  <h2>{{'TITLE.text1' | translate}}</h2>
+  <h2>{{'TITLE.text2' | translate}}</h2>
+
+</section>
+
+<!-- BOTTOM -->
+<section id='bottom'>
+
+  <img src="assets/img/jobleIlluFemme.svg" alt="illu_femme">
+  <article class="quote">
+    <q>{{'TITLE.quote' | translate}}</q>
+    <button mat-button class="add" routerLink="/connexion">{{'BUTTON.register' | translate}}</button>
+  </article>
+
+</section>
