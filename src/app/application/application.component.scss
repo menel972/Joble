@@ -10,15 +10,26 @@
 #sidenav {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-end;
   height: 100vh;
   background-color: $Indigo400;
 
+  .logo {
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   // LINK IN THE BAR
+  #version {
+    flex: 4%;
+  }
   div {
     width: 85%;
-    margin-top: 7vh;
+    flex: 100%;
+
     p {
       font-size: 1.2rem;
       color: $White;

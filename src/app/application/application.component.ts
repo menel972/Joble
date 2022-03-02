@@ -15,8 +15,8 @@ import { NavigationEnd, Router } from '@angular/router';
   animations : [
     trigger('sidenav', [
       state('retract', style({
-        width : '3vw',
-        minWidth : '3vw'
+        width : '3.5vw',
+        minWidth : '3.5vw'
       })
       ),
       state('expend', style ({
@@ -25,6 +25,19 @@ import { NavigationEnd, Router } from '@angular/router';
     })),
     transition('retract => expend', animate(300) ),
     transition('expend => retract', animate(200) )
+  ]),
+  trigger('logo', [
+    state('retract', style({
+      width: '3vw',
+      paddingRight: '0.3vw'
+    })
+    ),
+    state('expend', style({
+      width: '10vw',
+      paddingRight: '1vw'
+    })),
+    transition('retract => expend', animate(300)),
+    transition('expend => retract', animate(200))
   ])
 ]
 })

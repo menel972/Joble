@@ -3,8 +3,15 @@
   <!-- SIDE BAR  -->
 
   <section id='sidenav' [@sidenav]='state' #sidenav>
+
+    <article class='logo'>
+      <img [src]="state == 'expend' ? 'assets/jobleLogoBlanc.svg' : 'assets/jobleLogoNomBlanc.svg'" alt="logo"
+        [@logo]='state'>
+    </article>
+
     <div>
       <section class='line loin' routerLink="/home">
+
         <h5 *ngIf="state == 'expend'">{{'home' | translate }}</h5>
         <mat-icon>{{icon.home}}</mat-icon>
       </section>
@@ -18,6 +25,11 @@
         <section class='line'>
           <h5 *ngIf="state == 'expend'">{{'fichiers' | translate}}</h5>
           <mat-icon>{{ icon.file}}</mat-icon>
+        </section>
+
+        <section>
+          <h5 *ngIf="state == 'expend'">Blog</h5>
+          <mat-icon>{{ icon.blog}}</mat-icon>
         </section>
 
         <section>
@@ -39,7 +51,7 @@
     </div>
 
     <!-- VERSION -->
-    <div>
+    <div id='version'>
       <section>
         <p>{{ state === 'expend' ? ('version' | translate ) + ' : ' + version + '.' + correctif : version}}</p>
       </section>
