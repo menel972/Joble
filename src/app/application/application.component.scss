@@ -29,11 +29,6 @@
   div {
     width: 85%;
     flex: 100%;
-
-    p {
-      font-size: 1.2rem;
-      color: $White;
-    }
   }
   section {
     display: flex;
@@ -53,8 +48,9 @@
     }
 
     .mat-icon {
-      font-size: 26px;
+      font-size: 2.6rem;
       vertical-align: middle;
+      color: $White;
     }
 
     &:hover {
