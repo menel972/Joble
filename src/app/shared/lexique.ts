@@ -43,5 +43,6 @@ export enum icon {
   password = 'lock_open',
   userMail = 'alternate_email',
   logout = 'exit_to_app',
-  blog = 'format_color_text'
+  blog = 'format_color_text',
+  beta = 'build'
 }

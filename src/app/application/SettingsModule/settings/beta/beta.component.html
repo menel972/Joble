@@ -1,0 +1,89 @@
+<div class="container">
+
+  <mat-tab-group>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        {{'BETA.writeReport' | translate}}
+      </ng-template>
+
+      <form (ngSubmit)="sendReport()" [formGroup]="betaForm">
+
+        <article>
+          <!-- TITLE -->
+          <mat-form-field appearance="fill">
+            <mat-label [class]='{validate : betaForm.value.title}'>{{'title' | translate}}</mat-label>
+            <input matInput type="text" formControlName='title' [class]='{validate : betaForm.value.title}'>
+          </mat-form-field>
+
+
+          <!-- CREATED DATE-->
+          <mat-form-field appearance="legacy">
+            <input formControlName='date' matInput [matDatepicker]="picker" [disabled]='true'>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>{{icon.date_1}}</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        </article>
+        <!-- EXPLAIN -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : betaForm.value.explain}'>{{'explain' | translate}}</mat-label>
+          <textarea matInput cols="30" rows="10" formControlName='explain'
+            [class]='{validate : betaForm.value.explain}'></textarea>
+        </mat-form-field>
+
+        <article>
+          <button mat-button class='edit' [disabled]="betaForm.invalid">{{'BETA.sendReport' | translate}} <mat-icon>
+              {{icon.statusSend}}</mat-icon></button>
+        </article>
+      </form>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        {{'BETA.seeReport' | translate}}
+      </ng-template>
+      <section>
+        <table mat-table [dataSource]="source" class="mat-elevation-z8">
+
+          <!-- Index Column -->
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef> {{"JOB.index" | translate | titlecase}}</th>
+            <td id='index' mat-cell *matCellDef="let report, index as i"> {{i + 1}}
+            </td>
+          </ng-container>
+
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>{{"titles" | translate | titlecase}}
+            </th>
+            <td mat-cell *matCellDef="let report"> {{ report.title | translate | titlecase}} </td>
+          </ng-container>
+
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>{{"BETA.addDate" | translate | titlecase}}
+            </th>
+            <td mat-cell *matCellDef="let report"> {{ report.date | timeStamp : 'dd/MM/y'}} </td>
+          </ng-container>
+
+          <!-- State Column -->
+          <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef>{{"BETA.statuts" | translate | titlecase}}
+            </th>
+            <td mat-cell *matCellDef="let report">
+              <mat-icon>{{ report.state ? icon.statusYes : icon.statusWait}}</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </section>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

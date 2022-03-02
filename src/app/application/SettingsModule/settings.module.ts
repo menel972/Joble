@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
 
 // NGX TRANSLATE
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -23,6 +24,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './settings/profile/profile.component';
 import { AccountComponent } from './settings/account/account.component';
 import { SubscriptionComponent } from './settings/subscription/subscription.component';
+import { BetaComponent } from './settings/beta/beta.component';
+
+// PIPES
+import { TimestampPipe } from './SettingsShared/timestamp.pipe';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -33,7 +38,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SettingsComponent,
     ProfileComponent,
     AccountComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    BetaComponent,
+    TimestampPipe
   ],
   imports: [
     CommonModule,
@@ -53,7 +60,8 @@ MatCardModule,
 MatFormFieldModule,
 MatInputModule,
 MatTabsModule,
-MatDatepickerModule
+MatDatepickerModule,
+MatTableModule
   ]
 })
 export class SettingsModule { }

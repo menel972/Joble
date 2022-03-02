@@ -49,7 +49,7 @@ export class CRUDService {
       this.user.getCurrentUser$();
 
       return this.job$.pipe(
-        map(users => users.filter(user => user.userId === this.user.currentId$.getValue()))
+        map(jobs => jobs.filter(job => job.userId === this.user.currentId$.getValue()))
       );
     }
 

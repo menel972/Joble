@@ -34,7 +34,9 @@
   "resetLinkMessage":"You have received an email to change your password. You will be disconnected.",
   "signoutMessage":"You have been disconnected !",
   "userUpdateMessage": "Your profile has been edited.",
-
+  "title": "Title",
+  "titles": "Titles",
+  "explain": "Explanations",
 
   "JOB": {
     "index" : "#",
@@ -143,6 +145,16 @@
   "FOOTER": {
     "text1": "We want to stay in touch with you !",
     "text2": "Regular news and tips for a successful job search :"
+  },
+
+  "BETA": {
+    "title": "Beta test reports",
+    "writeReport": "Write a report",
+    "seeReport": "See my reports",
+    "sendReport": "Send the report",
+    "added": "has been added to your reports.",
+    "addDate": "Created date",
+    "statuts": "Treatments"
 
   }
 }

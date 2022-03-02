@@ -1,0 +1,80 @@
+@import 'src/libs/variables';
+
+.container {
+  height: 73vh;
+  margin-top: 2vh;
+  padding-top: 2vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+
+  form {
+    height: 64vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35vw;
+
+    .mat-form-field {
+      margin-bottom: 3vh;
+    }
+
+    article:first-of-type {
+      display: flex;
+      justify-content: space-between;
+
+      .mat-form-field:first-of-type {
+        flex: 100%;
+        margin-right: 1vw;
+      }
+
+      .mat-form-field:last-of-type {
+        width: 8vw;
+      }
+    }
+
+    article {
+      display: flex;
+      justify-content: center;
+    }
+
+    .validate {
+      color: $Indigo400;
+    }
+  }
+
+  section {
+    height: 60vh;
+    padding-top: 5vh;
+    width: 35vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    table {
+      width: 34vw;
+
+      th {
+        font-size: 1.5rem;
+        color: $Indigo400;
+      }
+
+      .mat-row {
+        transition: all 0.4s;
+        &:hover {
+          background-color: $Indigo50;
+          border-top: 2px solid #bbb;
+          border-bottom: 2px solid #bbb;
+        }
+      }
+
+      .mat-header-cell {
+        border-bottom: 1px solid #ccc;
+        .mat-icon {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

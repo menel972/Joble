@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class VersionService {
 
-  version = 0.7;
+  version = 1.0;
   correctif = 3;
 
   constructor() { }

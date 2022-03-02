@@ -20,8 +20,17 @@
         <app-account></app-account>
       </mat-tab>
 
-      <!-- SUBSCRIPTION -->
+      <!-- BETA-TEST -->
       <mat-tab [disabled]="version < 1">
+        <ng-template mat-tab-label>
+          <mat-icon>{{icon.beta}}</mat-icon>
+          {{'BETA.title' | translate}}
+        </ng-template>
+        <app-beta></app-beta>
+      </mat-tab>
+
+      <!-- SUBSCRIPTION -->
+      <mat-tab [disabled]="version < 1.5">
         <ng-template mat-tab-label>
           <mat-icon>{{icon.money}}</mat-icon>
           {{'subscription' | translate}}

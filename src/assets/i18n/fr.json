@@ -34,7 +34,9 @@
   "resetLinkMessage":"Vous avez reçu un mail pour modifier votre mot de passe. Vous allez être déconnecté.",
   "signoutMessage":"Vous êtes déconnecté.e !",
   "userUpdateMessage": "Votre profile a été modifié.",
-
+  "title": "Titre",
+  "titles": "Titres",
+  "explain": "Explications",
 
   "JOB":{
     "index" : "N°",
@@ -143,6 +145,15 @@
   "FOOTER": {
     "text1": "On veut rester en contact avec toi !",
     "text2": "Des nouvelles régulières et des conseils pour réussir ta recherche d'emploi :"
+  },
 
+  "BETA": {
+    "title": "Rapports de bêta-test",
+    "writeReport": "Ecrire un rapport",
+    "seeReport": "Voir mes rapports",
+    "sendReport": "Envoyer le rapport",
+    "added": "a été ajouté à vos rapports.",
+    "addDate": "Date de création",
+    "statuts": "Traitements"
   }
 }
