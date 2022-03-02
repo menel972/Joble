@@ -88,7 +88,8 @@ ngOnInit(): void {
       applicationMessage : this.appMsgForm.value.appMsg,
       note : this.data.job.note ? this.data.job.note : null,
       date_1 : this.data.job.date_1 ? this.data.job.date_1 : null,
-      date_2 : this.data.job.date_2 ? this.data.job.date_2 : null
+      date_2 : this.data.job.date_2 ? this.data.job.date_2 : null,
+      createdAt: this.data.job.createdAt
     };
 
     this.crud.updateJob(formValue);

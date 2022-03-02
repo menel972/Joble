@@ -89,7 +89,8 @@ editNote(): void {
       applicationMessage : this.data.job.applicationMessage ? this.data.job.applicationMessage : null,
       note : this.noteForm.value.note,
       date_1 : this.data.job.date_1 ? this.data.job.date_1 : null,
-      date_2 : this.data.job.date_2 ? this.data.job.date_2 : null
+      date_2 : this.data.job.date_2 ? this.data.job.date_2 : null,
+      createdAt: this.data.job.createdAt
     };
 
     this.crud.updateJob(formValue);

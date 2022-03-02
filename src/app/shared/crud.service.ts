@@ -49,7 +49,11 @@ export class CRUDService {
       this.user.getCurrentUser$();
 
       return this.job$.pipe(
-        map(users => users.filter(user => user.userId === this.user.currentId$.getValue()))
+        map(users => users.filter(user => user.userId === this.user.currentId$.getValue())),
+        map(jobs =>
+          // tslint:disable-next-line:no-non-null-assertion
+          jobs.sort((x, y) => +x.createdAt! - +y.createdAt!)
+        )
       );
     }
 

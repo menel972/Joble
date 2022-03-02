@@ -117,7 +117,8 @@ ngOnInit(): void {
       applicationMessage : this.data.job.applicationMessage ? this.data.job.applicationMessage : null,
       note : this.data.job.note ? this.data.job.note : null,
       date_1 : this.infoForm.value.date_1 ? this.infoForm.value.date_1 : null,
-      date_2 : this.infoForm.value.date_2 ? this.infoForm.value.date_2 : null
+      date_2 : this.infoForm.value.date_2 ? this.infoForm.value.date_2 : null,
+      createdAt: this.data.job.createdAt
     };
 
     this.crud.updateJob(formValue);

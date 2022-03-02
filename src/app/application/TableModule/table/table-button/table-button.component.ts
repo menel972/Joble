@@ -84,7 +84,8 @@ ngOnInit(): void {
     favorite : new FormControl(),
     status : new FormControl('', Validators.required),
     date_1: new FormControl(),
-    date_2 : new FormControl()
+    date_2 : new FormControl(),
+    createdAt: new FormControl(new Date)
   });
 }
 
@@ -106,9 +107,12 @@ submit(): void {
     applicationMessage : null,
     note :  null,
     date_1 : this.addForm.value.date_1 ? this.addForm.value.date_1 : null,
-    date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null};
+    date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null,
+    createdAt: this.addForm.value.createdAt
+  };
 
   this.crud.createJob(formValue);
+  console.log(formValue.createdAt);
   this.openSnackBar();
   this.addForm.reset();
   this.dialogRef.close();
@@ -221,7 +225,8 @@ ngOnInit(): void {
       applicationMessage : this.currentJob.applicationMessage ? this.currentJob.applicationMessage : null,
       note : this.currentJob.note ? this.currentJob.note : null,
       date_1 : this.editForm.value.date_1 ? this.editForm.value.date_1 : null,
-      date_2 : this.editForm.value.date_2 ? this.editForm.value.date_2 : null
+      date_2 : this.editForm.value.date_2 ? this.editForm.value.date_2 : null,
+      createdAt: this.currentJob.createdAt
     };
 
     this.crud.updateJob(formValue);
