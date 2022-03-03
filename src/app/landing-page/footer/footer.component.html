@@ -1,32 +1,44 @@
-<div class="container">
-  <section>
-    <article>
-      <h2>{{'FOOTER.text1' | translate}}</h2>
-      <h3>{{'FOOTER.text2' | translate}}</h3>
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-      <form [formGroup]="contactForm" (ngSubmit)='submit()'>
-        <mat-form-field appearance="fill">
-          <mat-label>{{'USER.firstName' | translate}}</mat-label>
-          <input matInput type="text" formControlName="name">
-        </mat-form-field>
+  <div [class]='{
+  container: true,
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}'>
+    <section>
+      <article>
+        <h2>{{'FOOTER.text1' | translate}}</h2>
+        <h3>{{'FOOTER.text2' | translate}}</h3>
 
-        <mat-form-field appearance="fill">
-          <mat-label>{{'JOB.mail' | translate}}</mat-label>
-          <input matInput type="mail" formControlName="mail">
-        </mat-form-field>
-        <article>
-          <button mat-button class="add" [disabled]="contactForm.invalid">{{'BUTTON.contact' | translate}}</button>
-        </article>
-      </form>
-    </article>
+        <form [formGroup]="contactForm" (ngSubmit)='submit()'>
+          <mat-form-field appearance="fill">
+            <mat-label>{{'USER.firstName' | translate}}</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>{{'JOB.mail' | translate}}</mat-label>
+            <input matInput type="mail" formControlName="mail">
+          </mat-form-field>
+          <article>
+            <button mat-button class="add" [disabled]="contactForm.invalid">{{'BUTTON.contact' | translate}}</button>
+          </article>
+        </form>
+      </article>
 
 
-    <article>
-      <img src="assets/img/jobleIlluHomme.svg" alt="illu_homme">
-    </article>
-  </section>
+      <article>
+        <img src="assets/img/jobleIlluHomme.svg" alt="illu_homme">
+      </article>
+    </section>
 
-  <section>
-    <p>"{{'TITLE.quote' | translate}}"</p>
-  </section>
-</div>
+    <section>
+      <p>"{{'TITLE.quote' | translate}}"</p>
+    </section>
+  </div>
+</ng-container>

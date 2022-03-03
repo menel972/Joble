@@ -1,12 +1,13 @@
+// GENERAL
 #head {
-  height: 20vh;
+  height: 18vh;
   padding: 3vh 3vw;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
 
   img {
-    width: 12vw;
+    width: 15vw;
   }
 
   #btn {
@@ -32,15 +33,15 @@
       }
 
       .mat-form-field {
-        width: 2.3vw;
+        width: 3vw;
       }
     }
   }
 }
 
 #text {
-  height: 30vh;
-  padding: 2vh 20vw;
+  height: 32vh;
+  padding: 2vh 18vw;
   box-sizing: border-box;
   text-align: center;
 
@@ -67,6 +68,38 @@
 
     q {
       margin-bottom: 3vh;
+    }
+  }
+}
+
+/* BREAKPOINT */
+
+// M
+.M {
+  #head {
+    height: 18vh;
+
+    img {
+      width: 17vw;
+    }
+    #lang {
+      .mat-form-field {
+        min-width: 3.5vw;
+      }
+    }
+  }
+
+  #text {
+    height: 35vh;
+    padding: 2vh 12vw;
+  }
+
+  #bottom {
+    height: 40vh;
+    padding: 2vh 6vw;
+
+    img {
+      width: 38vw;
     }
   }
 }

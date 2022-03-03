@@ -1,6 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-title',
@@ -16,7 +17,15 @@ export class TitleComponent implements OnInit {
     language = [{value : 'En'}, {value : 'Fr'}];
     selectedLanguage = this.language[0].value;
 
-  constructor(private translate: TranslateService) { }
+    // BREAKPOINT
+    Large$ = this.breakpoint.observe(Breakpoints.Large);
+    Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+    XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
+  constructor(
+    private translate: TranslateService,
+    private breakpoint: BreakpointObserver
+    ) { }
 
   ngOnInit(): void {
   }

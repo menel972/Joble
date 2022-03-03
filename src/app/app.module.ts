@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LayoutModule } from '@angular/cdk/layout';
+
 // FIREBASE
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -83,7 +85,8 @@ MatButtonModule,
 MatDatepickerModule,
 MatDialogModule,
 MatTabsModule,
-MatSnackBarModule
+MatSnackBarModule,
+LayoutModule
 ],
   providers: [],
   bootstrap: [AppComponent]

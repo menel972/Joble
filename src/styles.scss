@@ -22,10 +22,15 @@ $theme: mat.define-light-theme(
 // STYLE.SCSS
 @import './libs/reset';
 @import './libs/variables';
-@import './libs/themes/light.scss';
 @import './libs/font';
 @import './libs/button';
 @import './libs/table';
+@import './libs/M/M_font';
+@import './libs/M/M_button';
+@import './libs/M/M_table';
+@import './libs/XL/XL_font';
+@import './libs/XL/XL_button';
+@import './libs/XL/XL_table';
 /* GENERAL */
 
 html,

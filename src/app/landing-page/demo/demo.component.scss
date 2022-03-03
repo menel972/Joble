@@ -1,7 +1,7 @@
 @import 'src/libs/variables';
 
 .container {
-  height: 60vh;
+  height: 75vh;
   margin-top: 10vh;
   box-sizing: border-box;
   display: flex;
@@ -111,6 +111,62 @@
         text-align: right;
         flex: 5%;
       }
+    }
+  }
+}
+
+/* BREAKPOINT */
+
+// M
+.M {
+  display: flex;
+  flex-direction: column;
+
+  #text {
+    padding: 2vh 3vw;
+
+    h2 {
+      margin-bottom: 2vh;
+    }
+
+    h3 {
+      margin-bottom: 1vh;
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      li {
+        padding: 1.5vh 1vw;
+        margin-bottom: 0vh;
+        flex: 30%;
+        border-right: 1px solid #eee;
+        border-left: 1px solid #eee;
+        border-top: none;
+        border-bottom: none;
+
+        &:hover {
+          border-right: 1px solid #999;
+          border-left: 1px solid #999;
+          border-top: none;
+          border-bottom: none;
+        }
+      }
+
+      .liSelect {
+        border-right: 1px solid #999;
+        border-left: 1px solid #999;
+        border-top: none;
+        border-bottom: none;
+      }
+    }
+  }
+
+  #illu {
+    padding: 2vh 7vw;
+
+    article:first-of-type {
+      padding-top: 2vh;
     }
   }
 }
