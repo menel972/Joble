@@ -1,8 +1,14 @@
 .XL {
   .mat-button {
+    font-size: 1.8rem;
     border: 1px solid #bbb !important;
     background-color: #eee;
     color: #555;
+
+    .mat-icon {
+      vertical-align: text-bottom;
+      margin-right: 0.3vw;
+    }
 
     &:disabled {
       color: #aaa !important;
