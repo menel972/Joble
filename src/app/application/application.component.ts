@@ -65,14 +65,8 @@ constructor(
       if (router.url.includes('details')) {
         this.route = 'info';
       }
-      if (router.url.includes('dahsboard')) {
-        this.route = 'dashboard';
-      }
-      if (router.url.includes('dahsboard')) {
-        this.route = 'dashboard';
-      }
-      if (router.url.includes('dahsboard')) {
-        this.route = 'dashboard';
+      if (router.url.includes('settings')) {
+        this.route = 'settings';
       }
     }});
 }
