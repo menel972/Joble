@@ -66,5 +66,28 @@ li {
 
 .mat-icon {
   font-size: 2.2rem;
-  color: #555;
+  vertical-align: middle;
+}
+
+/* STATUS CLASS */
+
+.history {
+  color: #aaa !important;
+}
+
+.send {
+  color: $Green700 !important;
+}
+
+.clear {
+  color: $Red300 !important;
+}
+
+.done,
+.trueColor {
+  color: $Indigo300 !important;
+}
+
+.falseColor {
+  color: #aaa !important;
 }

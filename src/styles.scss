@@ -25,6 +25,7 @@ $theme: mat.define-light-theme(
 @import './libs/themes/light.scss';
 @import './libs/font';
 @import './libs/button';
+@import './libs/table';
 /* GENERAL */
 
 html,
@@ -33,34 +34,7 @@ body {
 }
 body {
   margin: 0;
+  padding: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   box-sizing: border-box;
-}
-
-/* STATUS CLASS */
-
-.history {
-  color: #aaa;
-}
-
-.send {
-  color: $Green700;
-}
-
-.clear {
-  color: $Red300;
-}
-
-.done,
-.trueColor {
-  color: $Indigo300;
-}
-
-.falseColor {
-  color: #aaa;
-}
-
-// LINK ACTIVE
-.active {
-  color: $Amber !important;
 }
