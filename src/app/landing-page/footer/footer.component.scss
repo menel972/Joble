@@ -37,6 +37,10 @@ section:last-of-type {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $White;
   background-color: #333;
+
+  p {
+    color: $White;
+    font-style: italic;
+  }
 }

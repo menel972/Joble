@@ -31,20 +31,20 @@
         <!-- LINE 2 -->
         <article class="Line2">
           <article class="card">
-            <h5>{{'JOB.DESCRIPTION.date_1' | translate | titlecase}} :</h5>
+            <p>{{'JOB.DESCRIPTION.date_1' | translate | titlecase}} :</p>
 
             <article class='date'>
               <p>{{job.date_1! | timeStamp : 'MMMM - y' |uppercase}}</p>
-              <p>{{job.date_1! | timeStamp : 'dd'}}</p>
+              <h2>{{job.date_1! | timeStamp : 'dd'}}</h2>
             </article>
 
           </article>
           <article class="card">
-            <h5>{{'JOB.DESCRIPTION.date_2' | translate | titlecase}} :</h5>
+            <p>{{'JOB.DESCRIPTION.date_2' | translate | titlecase}} :</p>
 
             <article class='date'>
               <p>{{job.date_2! | timeStamp : 'MMMM - y' |uppercase}}</p>
-              <p>{{job.date_2! | timeStamp : 'dd'}}</p>
+              <h2>{{job.date_2! | timeStamp : 'dd'}}</h2>
             </article>
           </article>
         </article>

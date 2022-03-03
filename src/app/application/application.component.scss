@@ -6,6 +6,12 @@
   color: $White;
 }
 
+// LINK ACTIVE
+.active .mat-icon,
+.active h5 {
+  color: $Amber !important;
+}
+
 // SIDENAV
 #sidenav {
   display: flex;
@@ -26,14 +32,10 @@
   #version {
     flex: 4%;
   }
+
   div {
     width: 85%;
     flex: 100%;
-
-    p {
-      font-size: 1.2rem;
-      color: $White;
-    }
   }
   section {
     display: flex;
@@ -42,7 +44,6 @@
     margin-top: 3vh;
     cursor: pointer;
     padding-right: 1vw;
-    color: $White;
 
     &:first-of-type {
       margin-top: 0vh;
@@ -50,11 +51,13 @@
 
     h5 {
       margin-right: 1vw;
+      color: $White;
     }
 
     .mat-icon {
-      font-size: 26px;
+      font-size: 2.6rem;
       vertical-align: middle;
+      color: $White;
     }
 
     &:hover {

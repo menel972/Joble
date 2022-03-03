@@ -1,11 +1,31 @@
+// MATERIAL DESIGN
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn: mat.define-palette(mat.$red-palette);
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($theme);
+
+// STYLE.SCSS
 @import './libs/reset';
 @import './libs/variables';
 @import './libs/themes/light.scss';
-
-@include mat-core();
-
-@include angular-material-theme($light-theme);
-
+@import './libs/font';
+@import './libs/button';
+@import './libs/table';
 /* GENERAL */
 
 html,
@@ -14,134 +34,7 @@ body {
 }
 body {
   margin: 0;
+  padding: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   box-sizing: border-box;
-}
-
-/* TEXT */
-
-p,
-.mat-form-field {
-  font-size: 1.4rem;
-}
-
-.mat-body h5,
-.mat-body-1 h5,
-.mat-typography h5 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.mat-body h4,
-.mat-body-1 h4,
-.mat-typography h4 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.mat-body h3,
-.mat-body-1 h3,
-.mat-typography h3 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-.mat-body h2,
-.mat-body-1 h2,
-.mat-typography h2 {
-  margin: 0;
-  font-size: 2.2rem;
-}
-.mat-body h1,
-.mat-body-1 h1,
-.mat-typography h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
-.mat-body p,
-.mat-body-1 p,
-.mat-typography p {
-  margin: 0;
-}
-.mat-icon {
-  font-size: 22px;
-}
-
-// BUTTON
-
-.mat-button {
-  border: 1px solid #bbb !important;
-  background-color: #eee;
-
-  &:disabled {
-    color: #aaa !important;
-    background-color: #eee;
-    &:hover {
-      background-color: #eee;
-    }
-  }
-}
-.add {
-  background-color: $Indigo400;
-  color: $White;
-
-  &:hover {
-    background-color: $Indigo500;
-  }
-}
-
-.edit {
-  color: $Green700;
-
-  &:hover {
-    background-color: $LightGreen;
-  }
-}
-
-.delete {
-  color: $Red300;
-
-  &:hover {
-    background-color: $Orange;
-  }
-}
-
-.icnEdit {
-  color: $Green200;
-  font-size: 2rem;
-  transition: 0.3s;
-  &:hover {
-    color: $Green700;
-    font-size: 3rem;
-  }
-}
-
-/* STATUS CLASS */
-
-.history {
-  color: #aaa;
-}
-
-.send {
-  color: $Green700;
-}
-
-.clear {
-  color: $Red300;
-}
-
-.done,
-.trueColor {
-  color: $Indigo300;
-}
-
-.falseColor {
-  color: #aaa;
-}
-
-// LINK ACTIVE
-.active {
-  color: $Amber !important;
 }
