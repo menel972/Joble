@@ -29,7 +29,7 @@
         border-bottom: 2px solid #bbb;
 
         #index .mat-icon {
-          font-size: 2rem;
+          font-size: 2.3rem;
           color: $Indigo300;
         }
       }
@@ -38,12 +38,16 @@
     // CELLS
 
     .mat-header-cell {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: $Indigo400;
       border-bottom: 1px solid #ccc;
       .mat-icon {
-        vertical-align: middle;
+        vertical-align: sub;
       }
+    }
+
+    .mat-cell {
+      font-size: 1.4rem;
     }
   }
 }

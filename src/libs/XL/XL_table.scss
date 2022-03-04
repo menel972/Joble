@@ -12,7 +12,7 @@
 
     #index {
       .mat-icon {
-        font-size: 1.8rem;
+        font-size: 2rem;
         color: $Indigo100;
         transition: all 0.4s;
       }
@@ -29,7 +29,7 @@
         border-bottom: 2px solid #bbb;
 
         #index .mat-icon {
-          font-size: 2rem;
+          font-size: 2.5rem;
           color: $Indigo300;
         }
       }
@@ -38,12 +38,17 @@
     // CELLS
 
     .mat-header-cell {
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: $Indigo400;
       border-bottom: 1px solid #ccc;
       .mat-icon {
-        vertical-align: middle;
+        vertical-align: sub;
+        margin-right: 0.5vw;
       }
+    }
+
+    .mat-cell {
+      font-size: 1.8rem;
     }
   }
 }

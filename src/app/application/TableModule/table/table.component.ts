@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,15 @@ import { Job } from 'src/app/shared/job';
 })
 export class TableComponent implements OnInit {
 
-  constructor( private crud: CRUDService) { }
+  constructor(
+    private crud: CRUDService,
+    private breakpoint: BreakpointObserver
+    ) { }
+
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+ XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   // ENUM ICON
   icon = icon;

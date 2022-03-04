@@ -37,11 +37,16 @@ table {
   // CELLS
 
   .mat-header-cell {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: $Indigo400;
     border-bottom: 1px solid #ccc;
     .mat-icon {
-      vertical-align: middle;
+      vertical-align: sub;
+      font-size: 1.9rem;
     }
+  }
+
+  .mat-cell {
+    font-size: 1.2rem;
   }
 }

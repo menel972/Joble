@@ -1,124 +1,137 @@
-<div class='container'>
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-  <!-- SEARCH BAR -->
-  <section>
-    <form [formGroup]="form" (ngSubmit)=" submit()">
-      <mat-form-field appearance="legacy">
-        <mat-label>{{"search" | translate | titlecase}}</mat-label>
-        <input matInput formControlName='search' [placeholder]="'FILTER.text' | translate">
-        <mat-icon class='linked' matSuffix (click)='erased()'>{{ form.value.search ? icon.statusNo : icon.search}}
-        </mat-icon>
-        <mat-hint>{{(dataSource | filter : form.value.search).length }}
-          {{(dataSource | filter : form.value.search).length > 1 ? ('results' | translate | lowercase) : ('result'
-          |translate | lowercase)}}
-          / {{dataSource.length}}</mat-hint>
-      </mat-form-field>
-    </form>
+  <div [class]='{
+  container: true,
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+  }'>
 
-    <app-table-button></app-table-button>
-  </section>
+    <!-- SEARCH BAR -->
+    <section>
+      <form [formGroup]="form" (ngSubmit)=" submit()">
+        <mat-form-field appearance="legacy">
+          <mat-label>{{"search" | translate | titlecase}}</mat-label>
+          <input matInput formControlName='search' [placeholder]="'FILTER.text' | translate">
+          <mat-icon class='linked' matSuffix (click)='erased()'>{{ form.value.search ? icon.statusNo : icon.search}}
+          </mat-icon>
+          <mat-hint>{{(dataSource | filter : form.value.search).length }}
+            {{(dataSource | filter : form.value.search).length > 1 ? ('results' | translate | lowercase) : ('result'
+            |translate | lowercase)}}
+            / {{dataSource.length}}</mat-hint>
+        </mat-form-field>
+      </form>
 
-
-  <!-- TABLE -->
-
-  <table mat-table [dataSource]="dataSource[0] ? (dataSource | filter : form.value.search) : dataBase"
-    class="mat-elevation-z8">
-
-    <!-- Index Column -->
-    <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef> {{"JOB.index" | translate | titlecase}}</th>
-      <td id='index' mat-cell *matCellDef="let job, index as i" (click)='setJob(job)'> {{i + 1}} <mat-icon>
-          {{icon.touch}}</mat-icon>
-      </td>
-    </ng-container>
-
-    <!-- Favorite Column -->
-    <ng-container matColumnDef="favorite">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.fav}}</mat-icon>
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'>
-        <mat-icon [class]='{trueColor : job.favorite, falseColor : !job.favorite}'>{{job.favorite == true ? icon.yesFav
-          : icon.noFav }}</mat-icon>
-      </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.workPlace}}</mat-icon> {{"JOB.names" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{ job.name | translate | titlecase}} </td>
-    </ng-container>
-
-    <!-- Status Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.status}}</mat-icon> {{"JOB.statuts" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'>
-        <!-- Not Yet Applied -->
-        <mat-icon *ngIf="job.status == 'history'" class='history'>{{icon.statusWait}}</mat-icon>
-        <!-- Application Sent -->
-        <mat-icon *ngIf="job.status == 'send'" class='send'>{{icon.statusSend}}</mat-icon>
-        <!-- Positive Response -->
-        <mat-icon *ngIf="job.status == 'done'" class='done'>{{icon.statusYes}}</mat-icon>
-        <!-- Negative Response -->
-        <mat-icon *ngIf="job.status == 'clear'" class='clear'>{{icon.statusNo}}</mat-icon>
-        <p *ngIf="!dataSource[0]">{{job.status | translate | titlecase}}</p>
-      </td>
-    </ng-container>
-
-    <!-- Work Column -->
-    <ng-container matColumnDef="work">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.work}}</mat-icon>{{"JOB.works" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'>{{job.work | translate | titlecase}}</td>
-    </ng-container>
-
-    <!-- Type Column -->
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.type}}</mat-icon> {{"JOB.types" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.type | translate | uppercase}} </td>
-    </ng-container>
-
-    <!-- City Column -->
-    <ng-container matColumnDef="city">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.city}}</mat-icon>{{"JOB.citys" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.city | translate |titlecase}} </td>
-    </ng-container>
-
-    <!-- Date_1 Column -->
-    <ng-container matColumnDef="date_1">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.date_1}}</mat-icon>{{"JOB.date_1" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.date_1 | timeStamp : 'dd/MM/y'}} </td>
-    </ng-container>
-
-    <!-- Date_2 Column -->
-    <ng-container matColumnDef="date_2">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-icon>{{icon.date_2}}</mat-icon>{{"JOB.date_2" | translate | titlecase}}
-      </th>
-      <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.date_2 | timeStamp : 'dd/MM/y'}} </td>
-    </ng-container>
+      <app-table-button></app-table-button>
+    </section>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/app/details', jobName, jobId]"
-      #tooltip='matTooltip' [matTooltip]='"info" | translate' matTooltipPosition="after" matTooltipShowDelay="1000"
-      matTooltipHideDelay="200"></tr>
+    <!-- TABLE -->
 
-    <!-- Row shown when there is no matching companie -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">{{"FILTER.error" | translate }} "{{form.value.search}}"</td>
-    </tr>
-  </table>
+    <table mat-table [dataSource]="dataSource[0] ? (dataSource | filter : form.value.search) : dataBase"
+      class="mat-elevation-z8">
 
-</div>
+      <!-- Index Column -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> {{"JOB.index" | translate | titlecase}}</th>
+        <td id='index' mat-cell *matCellDef="let job, index as i" (click)='setJob(job)'> {{i + 1}} <mat-icon>
+            {{icon.touch}}</mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- Favorite Column -->
+      <ng-container matColumnDef="favorite">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.fav}}</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'>
+          <mat-icon [class]='{trueColor : job.favorite, falseColor : !job.favorite}'>{{job.favorite == true ?
+            icon.yesFav
+            : icon.noFav }}</mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.workPlace}}</mat-icon> {{"JOB.names" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{ job.name | translate | titlecase}} </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.status}}</mat-icon> {{"JOB.statuts" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'>
+          <!-- Not Yet Applied -->
+          <mat-icon *ngIf="job.status == 'history'" class='history'>{{icon.statusWait}}</mat-icon>
+          <!-- Application Sent -->
+          <mat-icon *ngIf="job.status == 'send'" class='send'>{{icon.statusSend}}</mat-icon>
+          <!-- Positive Response -->
+          <mat-icon *ngIf="job.status == 'done'" class='done'>{{icon.statusYes}}</mat-icon>
+          <!-- Negative Response -->
+          <mat-icon *ngIf="job.status == 'clear'" class='clear'>{{icon.statusNo}}</mat-icon>
+          <p *ngIf="!dataSource[0]">{{job.status | translate | titlecase}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Work Column -->
+      <ng-container matColumnDef="work">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.work}}</mat-icon>{{"JOB.works" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'>{{job.work | translate | titlecase}}</td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.type}}</mat-icon> {{"JOB.types" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.type | translate | uppercase}} </td>
+      </ng-container>
+
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.city}}</mat-icon>{{"JOB.citys" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.city | translate |titlecase}} </td>
+      </ng-container>
+
+      <!-- Date_1 Column -->
+      <ng-container matColumnDef="date_1">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.date_1}}</mat-icon>{{"JOB.date_1" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.date_1 | timeStamp : 'dd/MM/y'}} </td>
+      </ng-container>
+
+      <!-- Date_2 Column -->
+      <ng-container matColumnDef="date_2">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-icon>{{icon.date_2}}</mat-icon>{{"JOB.date_2" | translate | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let job" (click)='setJob(job)'> {{job.date_2 | timeStamp : 'dd/MM/y'}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/app/details', jobName, jobId]"
+        #tooltip='matTooltip' [matTooltip]='"info" | translate' matTooltipPosition="after" matTooltipShowDelay="1000"
+        matTooltipHideDelay="200"></tr>
+
+      <!-- Row shown when there is no matching companie -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">{{"FILTER.error" | translate }} "{{form.value.search}}"</td>
+      </tr>
+    </table>
+
+  </div>
+</ng-container>
