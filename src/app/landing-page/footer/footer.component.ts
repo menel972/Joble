@@ -1,5 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,12 @@ export class FooterComponent implements OnInit {
 
   contactForm !: FormGroup;
 
-  constructor() { }
+        // BREAKPOINT
+        Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+        Large$ = this.breakpoint.observe(Breakpoints.Large);
+        XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
+        constructor(private breakpoint: BreakpointObserver) { }
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
