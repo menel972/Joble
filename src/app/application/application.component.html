@@ -21,8 +21,10 @@
       </article>
 
       <div>
-        <section class='line loin' routerLink="/home" [@classLogo]='state'>
-
+        <article class='flex-row just-end'>
+          <hr>
+        </article>
+        <section class='line loin first' routerLink="/home" [@classLogo]='state'>
           <h5 *ngIf="state == 'expend'">{{'home' | translate }}</h5>
           <mat-icon>{{icon.home}}</mat-icon>
         </section>
@@ -33,7 +35,10 @@
         </section>
 
         <ng-container *ngIf="version > 1">
-          <section class='line' [@classLogo]='state'>
+          <article class='flex-row just-end'>
+            <hr>
+          </article>
+          <section class='line first' [@classLogo]='state'>
             <h5 *ngIf="state == 'expend'">{{'fichiers' | translate}}</h5>
             <mat-icon>{{ icon.file}}</mat-icon>
           </section>
