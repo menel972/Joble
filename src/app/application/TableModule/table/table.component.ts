@@ -55,6 +55,11 @@ export class TableComponent implements OnInit {
     this.form = new FormGroup({
       search : new FormControl('')
     });
+
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+      this.displayedColumns.shift();
+      this.displayedColumns.pop();
+    }
   }
 
   setJob(job: Job): void {

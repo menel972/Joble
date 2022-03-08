@@ -36,7 +36,7 @@
       class="mat-elevation-z8">
 
       <!-- Index Column -->
-      <ng-container matColumnDef="index">
+      <ng-container matColumnDef="index" *ngIf="!BK.M!.matches">
         <th mat-header-cell *matHeaderCellDef> {{"JOB.index" | translate | titlecase}}</th>
         <td id='index' mat-cell *matCellDef="let job, index as i" (click)='setJob(job)'> {{i + 1}} <mat-icon>
             {{icon.touch}}</mat-icon>
@@ -114,7 +114,7 @@
       </ng-container>
 
       <!-- Date_2 Column -->
-      <ng-container matColumnDef="date_2">
+      <ng-container matColumnDef="date_2" *ngIf="!BK.M!.matches">
         <th mat-header-cell *matHeaderCellDef>
           <mat-icon>{{icon.date_2}}</mat-icon>{{"JOB.date_2" | translate | titlecase}}
         </th>
