@@ -1,4 +1,4 @@
-.container {
+.L {
   table {
     width: 100%;
 
@@ -7,6 +7,7 @@
     th {
       .mat-icon {
         color: $Indigo400;
+        font-size: 2.4rem !important;
       }
     }
 
@@ -43,26 +44,12 @@
       border-bottom: 1px solid #ccc;
       .mat-icon {
         vertical-align: sub;
+        margin-right: 0.3vw;
       }
     }
 
     .mat-cell {
       font-size: 1.4rem;
-    }
-  }
-}
-
-/* BREAKPOINTS */
-
-// M
-.M {
-  th {
-    .mat-header-cell {
-      font-size: 1.1rem;
-    }
-
-    .mat-cell {
-      font-size: 1rem;
     }
   }
 }
