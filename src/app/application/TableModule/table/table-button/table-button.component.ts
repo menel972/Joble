@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-table-button',
@@ -14,11 +15,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TableButtonComponent implements OnInit {
 
-  constructor(public dialog: MatDialog,
-              private crud: CRUDService) { }
+  constructor(
+    public dialog: MatDialog,
+    private crud: CRUDService,
+    private breakpoint: BreakpointObserver
+  ) { }
 
   // ENUM ICON
   icon = icon;
+
+      // BREAKPOINT
+      Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+      Large$ = this.breakpoint.observe(Breakpoints.Large);
+      XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   Jobs$ = this.crud.readAllJobs$();
 
@@ -29,7 +38,17 @@ export class TableButtonComponent implements OnInit {
 
 // OPEN ADD DIALOG
   openAddDialog(): void {
-    this.dialog.open(DashboardAddDialog, { height: '65vh', width: '50%' });
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+      this.dialog.open(DashboardAddDialog, { height: '70vh', width: '65%' });
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.Large)) {
+      this.dialog.open(DashboardAddDialog, { height: '65vh', width: '50%' });
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+      this.dialog.open(DashboardAddDialog, { height: '60vh', width: '50%' });
+    }
   }
 
 // OPEN EDIT DIALOG

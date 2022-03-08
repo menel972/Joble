@@ -5,10 +5,10 @@
     L: Large$ | async,
     XL: XtraLarge$ | async
   } as BK">
-    <p *ngIf="!BK.M!.matches && !BK.L!.matches && !BK.XL!.matches">small</p>
+    <!-- <p *ngIf="!BK.M!.matches && !BK.L!.matches && !BK.XL!.matches">small</p>
     <p *ngIf="BK.M!.matches">Medium 960px - 1279.99px + Landscape</p>
     <p *ngIf="BK.L!.matches">Large 1280px - 1919.99px</p>
-    <p *ngIf="BK.XL!.matches">XtraLarge min 1920px</p>
+    <p *ngIf="BK.XL!.matches">XtraLarge min 1920px</p> -->
 
     <router-outlet *ngIf="BK.M!.matches || BK.L!.matches || BK.XL!.matches"></router-outlet>
   </ng-container>
