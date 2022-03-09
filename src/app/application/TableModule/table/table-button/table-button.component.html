@@ -1,6 +1,21 @@
 <ng-container *ngIf="Jobs$ | async as Jobs">
-<button mat-button class='add' (click)='openAddDialog()' [disabled]="Jobs.length == 12">{{'BUTTON.add' |translate |titlecase}} <mat-icon>{{icon.add}}</mat-icon></button>
-<button mat-button class='edit' (click)='openEditDialog()' [disabled]="!Jobs">{{'BUTTON.edit' |translate |titlecase}} <mat-icon>{{icon.edit}}</mat-icon></button>
-<button mat-button class='delete' (click)='openDeleteDialog()' [disabled]="!Jobs">{{'BUTTON.delete' |translate |titlecase}} <mat-icon>{{icon.delete}}</mat-icon></button>
+  <ng-container *ngIf="{
+    M: Medium$ | async,
+    L: Large$ | async,
+    XL: XtraLarge$ | async
+  } as BK">
 
+    <div [class]='{
+    M: BK.M!.matches,
+    L: BK.L!.matches,
+    XL: BK.XL!.matches
+  }'>
+      <button mat-button class='add' (click)='openAddDialog()' [disabled]="Jobs.length == 12">{{'BUTTON.add' |translate
+        |titlecase}} <mat-icon>{{icon.add}}</mat-icon></button>
+      <button mat-button class='edit' (click)='openEditDialog()' [disabled]="!Jobs">{{'BUTTON.edit' |translate
+        |titlecase}} <mat-icon>{{icon.edit}}</mat-icon></button>
+      <button mat-button class='delete' (click)='openDeleteDialog()' [disabled]="!Jobs">{{'BUTTON.delete' |translate
+        |titlecase}} <mat-icon>{{icon.delete}}</mat-icon></button>
+    </div>
+  </ng-container>
 </ng-container>
