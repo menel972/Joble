@@ -47,7 +47,7 @@ export class TableButtonComponent implements OnInit {
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-      this.dialog.open(DashboardAddDialog, { height: '65vh', width: '50%' });
+      this.dialog.open(DashboardAddDialog, { height: '70vh', width: '50%' });
     }
   }
 
@@ -62,7 +62,7 @@ export class TableButtonComponent implements OnInit {
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-    this.dialog.open(DashboardEditDialog, { height: '65vh', width: '50%' });
+    this.dialog.open(DashboardEditDialog, { height: '70vh', width: '50%' });
     }
   }
 
@@ -77,7 +77,7 @@ export class TableButtonComponent implements OnInit {
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-    this.dialog.open(DashboardDeleteDialog, { height: '65vh', width: '50%' });
+    this.dialog.open(DashboardDeleteDialog, { height: '70vh', width: '50%' });
     }
   }
 }

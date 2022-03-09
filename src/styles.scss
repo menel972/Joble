@@ -29,9 +29,11 @@ $theme: mat.define-light-theme(
 @import './libs/M/M_font';
 @import './libs/M/M_button';
 @import './libs/M/M_table';
+@import './libs/M/M_forms';
 @import './libs/XL/XL_font';
 @import './libs/XL/XL_button';
 @import './libs/XL/XL_table';
+@import './libs/XL/XL_forms';
 /* GENERAL */
 
 html,
