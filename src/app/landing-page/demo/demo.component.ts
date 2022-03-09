@@ -12,10 +12,10 @@ export class DemoComponent implements OnInit {
   // ENUM ICON
   icon = icon;
 
-      // BREAKPOINT
-      Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
-      Large$ = this.breakpoint.observe(Breakpoints.Large);
-      XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   select = 1;
 

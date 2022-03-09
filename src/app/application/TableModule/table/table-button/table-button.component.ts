@@ -43,22 +43,42 @@ export class TableButtonComponent implements OnInit {
     }
 
     if (this.breakpoint.isMatched(Breakpoints.Large)) {
-      this.dialog.open(DashboardAddDialog, { height: '65vh', width: '50%' });
+      this.dialog.open(DashboardAddDialog, { height: '70vh', width: '60%' });
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-      this.dialog.open(DashboardAddDialog, { height: '60vh', width: '50%' });
+      this.dialog.open(DashboardAddDialog, { height: '65vh', width: '50%' });
     }
   }
 
 // OPEN EDIT DIALOG
   openEditDialog(): void {
-    this.dialog.open(DashboardEditDialog, { height: '95vh', width: '55%' });
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+    this.dialog.open(DashboardEditDialog, { height: '70vh', width: '65%' });
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(DashboardEditDialog, { height: '70vh', width: '60%' });
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+    this.dialog.open(DashboardEditDialog, { height: '65vh', width: '50%' });
+    }
   }
 
 // OPEN DELETE DIALOG
   openDeleteDialog(): void {
-    this.dialog.open(DashboardDeleteDialog, { height: '95vh', width: '55%' });
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+    this.dialog.open(DashboardDeleteDialog, { height: '70vh', width: '65%' });
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(DashboardDeleteDialog, { height: '70vh', width: '60%' });
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+    this.dialog.open(DashboardDeleteDialog, { height: '65vh', width: '50%' });
+    }
   }
 }
 
@@ -73,65 +93,76 @@ export class TableButtonComponent implements OnInit {
 export class DashboardAddDialog implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<DashboardAddDialog>, private crud: CRUDService, private translate: TranslateService, private snackBar: MatSnackBar) {}
+    public dialogRef: MatDialogRef<DashboardAddDialog>,
+    private crud: CRUDService,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar,
+    private breakpoint: BreakpointObserver
+    ) {}
 
   // ENUM ICON
   icon = icon;
 
   addForm !: FormGroup;
 
-// STATUS SELECT
-status = [
+    // BREAKPOINT
+    Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+    Large$ = this.breakpoint.observe(Breakpoints.Large);
+    XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
+  // STATUS SELECT
+  status = [
   {value : 'history', viewValue: this.translate.instant('JOB.DESCRIPTION.statusWait') },
-{value : 'send', viewValue: this.translate.instant('JOB.DESCRIPTION.statusSend') },
-{value : 'done', viewValue: this.translate.instant('JOB.DESCRIPTION.statusYes') },
-{value : 'clear', viewValue: this.translate.instant('JOB.DESCRIPTION.statusNo') }];
+  {value : 'send', viewValue: this.translate.instant('JOB.DESCRIPTION.statusSend') },
+  {value : 'done', viewValue: this.translate.instant('JOB.DESCRIPTION.statusYes') },
+  {value : 'clear', viewValue: this.translate.instant('JOB.DESCRIPTION.statusNo') }];
 
-selectedStatus = this.status[0].value;
+  selectedStatus = this.status[0].value;
 
-// FAVORITE SELECT
-favs = [
+  // FAVORITE SELECT
+  favs = [
   {value : true, viewValue: this.translate.instant('BUTTON.add') },
-{value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
+  {value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
 
-ngOnInit(): void {
-  this.addForm = new FormGroup({
-    name : new FormControl('', Validators.required),
-    type : new FormControl(),
-    work : new FormControl(),
-    city : new FormControl(),
-    favorite : new FormControl(),
-    status : new FormControl('', Validators.required),
-    date_1: new FormControl(),
-    date_2 : new FormControl()
-  });
-}
-
-// JOB SUBMIT
-submit(): void {
-  const formValue: Job = {
-    userId: ' ',
-    favorite : this.addForm.value.favorite ? this.addForm.value.favorite : null,
-    name : this.addForm.value.name,
-    status : this.addForm.value.status,
-    type : this.addForm.value.type ? this.addForm.value.type : null,
-    work : this.addForm.value.work ? this.addForm.value.work : null,
-    web : null,
-    city : this.addForm.value.city ? this.addForm.value.city : null,
-    adress : null,
-    contact : null,
-    tel : null,
-    mail :  null,
-    applicationMessage : null,
-    note :  null,
-    date_1 : this.addForm.value.date_1 ? this.addForm.value.date_1 : null,
-    date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null};
-
-  this.crud.createJob(formValue);
-  this.openSnackBar();
-  this.addForm.reset();
-  this.dialogRef.close();
+  ngOnInit(): void {
+    this.addForm = new FormGroup({
+      name : new FormControl('', Validators.required),
+      type : new FormControl(),
+      work : new FormControl(),
+      city : new FormControl(),
+      favorite : new FormControl(),
+      status : new FormControl('', Validators.required),
+      date_1: new FormControl(),
+      date_2 : new FormControl()
+    });
   }
+
+  // JOB SUBMIT
+  submit(): void {
+    const formValue: Job = {
+      userId: ' ',
+      favorite : this.addForm.value.favorite ? this.addForm.value.favorite : null,
+      name : this.addForm.value.name,
+      status : this.addForm.value.status,
+      type : this.addForm.value.type ? this.addForm.value.type : null,
+      work : this.addForm.value.work ? this.addForm.value.work : null,
+      web : null,
+      city : this.addForm.value.city ? this.addForm.value.city : null,
+      adress : null,
+      contact : null,
+      tel : null,
+      mail :  null,
+      applicationMessage : null,
+      note :  null,
+      date_1 : this.addForm.value.date_1 ? this.addForm.value.date_1 : null,
+      date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null
+    };
+
+    this.crud.createJob(formValue);
+    this.openSnackBar();
+    this.addForm.reset();
+    this.dialogRef.close();
+    }
 
   // SNACK-BAR
   openSnackBar(): void {
