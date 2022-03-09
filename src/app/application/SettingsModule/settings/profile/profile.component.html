@@ -35,7 +35,7 @@
         <mat-label [class]='{validate : profileForm.value.age}'>{{'USER.age' | translate}}</mat-label>
         <input matInput formControlName='age' [matDatepicker]="picker" [class]='{validate : profileForm.value.age}'>
         <mat-datepicker-toggle matSuffix [for]="picker">
-          <mat-icon matDatepickerToggleIcon>{{icon.date_1}}</mat-icon>
+          <mat-icon matDatepickerToggleIcon [class]='{validate : profileForm.value.age}'>{{icon.date_1}}</mat-icon>
         </mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
