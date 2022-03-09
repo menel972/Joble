@@ -321,22 +321,31 @@ export class DashboardDeleteDialog implements OnInit {
 
     constructor(
       public dialogRef: MatDialogRef<DashboardDeleteDialog>,
-      private crud: CRUDService, private translate: TranslateService, private snackBar: MatSnackBar) {}
+      private crud: CRUDService,
+      private translate: TranslateService,
+      private snackBar: MatSnackBar,
+      private breakpoint: BreakpointObserver
+    ) {}
 
     // ENUM ICON
     icon = icon;
 
     name !: string;
 
-  // JOB LIST
-  dataSource$ = this.crud.readAllJobs$();
-  selectedJob$ = this.crud.readCurrentJob$();
+   // BREAKPOINT
+   Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+   Large$ = this.breakpoint.observe(Breakpoints.Large);
+   XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
-  // SELECTED JOB
-  Window = false;
+    // JOB LIST
+    dataSource$ = this.crud.readAllJobs$();
+    selectedJob$ = this.crud.readCurrentJob$();
 
-  ngOnInit(): void {
-  }
+   // SELECTED JOB
+   Window = false;
+
+    ngOnInit(): void {
+    }
 
   changeWindow (job: Job): void {
     this.crud.setCurrentJob(job);
