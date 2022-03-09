@@ -151,9 +151,9 @@ export class DashboardAddDialog implements OnInit {
       adress : null,
       contact : null,
       tel : null,
-      mail :  null,
+      mail : null,
       applicationMessage : null,
-      note :  null,
+      note : null,
       date_1 : this.addForm.value.date_1 ? this.addForm.value.date_1 : null,
       date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null
     };
@@ -192,10 +192,20 @@ export class DashboardAddDialog implements OnInit {
 export class DashboardEditDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<DashboardEditDialog>, private crud: CRUDService, private translate: TranslateService, private snackBar: MatSnackBar) {}
+    public dialogRef: MatDialogRef<DashboardEditDialog>,
+    private crud: CRUDService,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar,
+    private breakpoint: BreakpointObserver
+  ) {}
 
     // ENUM ICON
     icon = icon;
+
+    // BREAKPOINT
+    Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+    Large$ = this.breakpoint.observe(Breakpoints.Large);
+    XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   editForm !: FormGroup;
 
