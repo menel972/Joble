@@ -1,5 +1,17 @@
-<div class="container">
-  <h2>{{'logoutMessage' | translate}}</h2>
-  <button mat-button class='delete' (click)='logout()'>{{'BUTTON.logout' | translate}} <mat-icon>{{icon.logout}}
-    </mat-icon></button>
-</div>
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
+
+  <div [class]='{
+  container: true,
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}'>
+    <h2>{{'logoutMessage' | translate}}</h2>
+    <button mat-button class='delete' (click)='logout()'>{{'BUTTON.logout' | translate}} <mat-icon>{{icon.logout}}
+      </mat-icon></button>
+  </div>
+</ng-container>

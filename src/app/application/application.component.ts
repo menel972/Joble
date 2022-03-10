@@ -49,34 +49,35 @@ export class ApplicationComponent implements OnInit {
   version = this.Version.version;
   correctif = this.Version.correctif;
 
-user$ = this.user.currentUser$;
+  user$ = this.user.currentUser$;
 
-constructor(
-  private translate: TranslateService,
-  private router: Router,
-  private user: UserService,
-  private dialog: MatDialog,
-  private Version: VersionService
-  ) {
-  this.router.events.subscribe( (event) => {
-    if (event instanceof NavigationEnd) {
-      if (router.url.includes('dashboard')) {
-        this.route = 'dashboard';
-      }
-      if (router.url.includes('details')) {
-        this.route = 'info';
-      }
-      if (router.url.includes('dahsboard')) {
-        this.route = 'dashboard';
-      }
-      if (router.url.includes('dahsboard')) {
-        this.route = 'dashboard';
-      }
-      if (router.url.includes('dahsboard')) {
-        this.route = 'dashboard';
-      }
-    }});
-}
+  constructor(
+    private translate: TranslateService,
+    private router: Router,
+    private user: UserService,
+    private dialog: MatDialog,
+    private Version: VersionService,
+    private breakpoint: BreakpointObserver
+    ) {
+    this.router.events.subscribe( (event) => {
+      if (event instanceof NavigationEnd) {
+        if (router.url.includes('dashboard')) {
+          this.route = 'dashboard';
+        }
+        if (router.url.includes('details')) {
+          this.route = 'info';
+        }
+        if (router.url.includes('dahsboard')) {
+          this.route = 'dashboard';
+        }
+        if (router.url.includes('dahsboard')) {
+          this.route = 'dashboard';
+        }
+        if (router.url.includes('dahsboard')) {
+          this.route = 'dashboard';
+        }
+      }});
+  }
 
   // ENUM ICON
   icon = icon;
@@ -101,10 +102,26 @@ constructor(
 
 // DIALOG
 openLogoutDialog(): void {
-  this.dialog.open(LogoutDialog, {
-    height: '35vh',
-    width: '25%'
-  });
+  if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+    this.dialog.open(LogoutDialog, {
+      height: '35vh',
+      width: '40%'
+    });
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(LogoutDialog, {
+      height: '35vh',
+      width: '35%'
+    });
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+    this.dialog.open(LogoutDialog, {
+      height: '35vh',
+      width: '25%'
+    });
+  }
 }
 }
 
@@ -120,11 +137,16 @@ export class LogoutDialog implements OnInit {
 
   // ENUM ICON
   icon = icon;
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   constructor(
     private dialogRef: MatDialogRef<LogoutDialog>,
-    private auth: AuthService
-    ) {}
+    private auth: AuthService,
+    private breakpoint: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
   }
