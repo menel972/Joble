@@ -47,70 +47,75 @@
       flex: 60%;
       margin-bottom: 1vh;
 
-      .textLine1 {
-        display: flex;
-        flex-direction: column;
-      }
-
-      // DATES
-      .Line2 .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2vh;
-
-        p {
-          font-weight: 500;
-        }
-
-        &:first-of-type {
-          margin: 5vh 2vw;
-        }
-
-        &:last-of-type {
-          margin: 5vh 2vw;
-        }
-
-        .date {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 10vw;
-          margin-top: 2vh;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-
-          p:first-of-type {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            background-color: $Indigo400;
-            color: $White;
-            height: 4vh;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-          }
-
-          h2 {
-            font-weight: 400;
-            text-align: center;
-            margin: 5vh 0;
-          }
-        }
-      }
-
-      .textLine2 {
-        align-items: flex-end;
-      }
       .name_status {
         display: flex;
+        flex: 50%;
 
         .mat-icon {
           font-size: 4.5rem;
           margin-right: 2vw;
           vertical-align: middle;
+        }
+      }
+
+      .textLine1 {
+        display: flex;
+        flex-direction: column;
+
+        h4,
+        h5 {
+          margin-bottom: 0.5vh;
+        }
+      }
+
+      .textLine2 {
+        flex: 50%;
+        align-items: flex-end;
+      }
+
+      // DATES
+      .Line2 .card {
+        margin: 7vh 1vw 5vh 1vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          font-weight: 500;
+        }
+
+        .date {
+          display: flex;
+          flex-direction: column;
+          width: 10vw;
+          margin-top: 2vh;
+
+          p {
+            height: 2vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            background-color: $Indigo400;
+            color: $White;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+
+          h2 {
+            height: 8vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            font-weight: 400;
+            border: 1px solid #ccc;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
         }
       }
     }
@@ -120,7 +125,7 @@
       flex: 40%;
       margin: 0 0 1vh 1vh;
 
-      p {
+      h6 {
         font-family: 'Mali', cursive;
         box-sizing: border-box;
         margin-top: 0.5vh;
@@ -207,5 +212,52 @@
         }
       }
     }
+  }
+}
+
+/* BREAKPOINTS */
+
+// M
+.M {
+  #info1 {
+    .name_status .mat-icon {
+      font-size: 4rem !important;
+    }
+
+    .textLine1 {
+      h4,
+      h5 {
+        margin-bottom: 0vh !important;
+      }
+    }
+
+    // DATES
+    .Line2 .card {
+      margin: 7vh 0.5vw 5vh 0.5vw;
+
+      p {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .date {
+        width: 11vw;
+
+        p {
+          height: 2.5vw;
+        }
+
+        h2 {
+          height: 8.5vw;
+        }
+      }
+    }
+  }
+}
+
+// XL
+.XL {
+  #info1 .name_status .mat-icon {
+    font-size: 5rem !important;
   }
 }
