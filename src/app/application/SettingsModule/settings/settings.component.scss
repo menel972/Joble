@@ -12,10 +12,44 @@
 
     ::ng-deep .mat-tab-label {
       margin: 0vh 2vw;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+
+      .mat-icon {
+        font-size: 2.4rem;
+        margin-right: 0.5vw;
+      }
     }
 
     ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
       background-color: $Indigo400;
+    }
+  }
+}
+
+/* BREAKPOINTS */
+
+// M
+.M {
+  ::ng-deep .mat-tab-label {
+    font-size: 1.6rem;
+
+    .mat-icon {
+      font-size: 2.2rem;
+      margin-right: 0.5vw;
+    }
+  }
+}
+
+// XL
+.XL {
+  ::ng-deep .mat-tab-label {
+    font-size: 2.2rem;
+
+    .mat-icon {
+      font-size: 2.8rem;
+      margin-right: 0.5vw;
     }
   }
 }

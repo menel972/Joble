@@ -1,0 +1,24 @@
+.XL {
+  mat-label {
+    font-size: 2rem;
+
+    .mat-icon {
+      font-size: 2.4rem;
+      vertical-align: bottom;
+      margin-right: 0.5vw;
+    }
+  }
+
+  .validate {
+    color: $Indigo400;
+  }
+
+  .mat-input-element {
+    font-size: 1.8rem;
+    color: #555;
+  }
+
+  .mat-form-field .mat-form-field-suffix .mat-icon-button .mat-icon {
+    font-size: 2rem;
+  }
+}

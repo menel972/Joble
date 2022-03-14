@@ -17,22 +17,21 @@
   flex-direction: column;
 
   // TITLE
-  article {
+  #icn {
+    display: flex;
+    align-items: center;
+
     #close {
-      font-size: 2rem;
-      margin-left: 1vw;
-      vertical-align: super;
+      margin-left: 0.5vw;
       cursor: pointer;
       transition: all 0.3s;
 
       &:hover {
         color: $Red300;
-        font-size: 2.5rem;
       }
     }
 
     #back {
-      font-size: 3.2rem;
       cursor: pointer;
       transition: all 0.3s;
 
@@ -46,46 +45,45 @@
 
   ul {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-  }
-  li {
-    flex: 45%;
-    margin: 2vh;
-    max-width: 22vw;
+    li {
+      flex: 45%;
+      margin: 2vh;
 
-    .mat-card {
-      display: flex;
-      justify-content: space-between;
-      border: 1px solid #ddd;
-      cursor: pointer;
-      transition: 0.3s;
-
-      .mat-icon {
-        font-size: 2rem;
-        vertical-align: middle;
-      }
-
-      #edit {
-        color: $Green200;
+      .mat-card {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #ddd;
+        cursor: pointer;
         transition: 0.3s;
-      }
 
-      &:hover {
-        background-color: $LightGreen;
+        .mat-icon {
+          font-size: 2rem;
+        }
 
         #edit {
-          color: $Green700;
-          font-size: 2.8rem;
+          color: $Green200;
+          transition: 0.3s;
         }
-      }
-      article {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
 
-        &:first-of-type {
-          align-items: flex-start;
+        &:hover {
+          background-color: $LightGreen;
+
+          #edit {
+            color: $Green700;
+            font-size: 2.8rem;
+          }
+        }
+        article {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+
+          &:first-of-type {
+            align-items: flex-start;
+          }
         }
       }
     }
@@ -95,8 +93,11 @@
 
   form {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     padding: 5vh 2vw;
+    box-sizing: border-box;
 
     // INPUTS
 
@@ -104,21 +105,15 @@
       display: flex;
       flex-direction: column;
       flex: 42%;
+      box-sizing: border-box;
+      margin-bottom: 2vh;
 
       &:first-of-type {
         margin-right: 3vw;
-        margin-bottom: 2vh;
       }
-
-      .mat-icon {
-        font-size: 1.8rem;
-        margin-right: 0.5vw;
-        vertical-align: middle;
-      }
-
-      .validate {
-        color: $Indigo400;
-      }
+    }
+    article {
+      width: 100%;
     }
   }
 }

@@ -1,0 +1,102 @@
+.M {
+  h1,
+  .mat-body h1,
+  .mat-body-1 h1,
+  .mat-typography h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #555;
+  }
+
+  h2,
+  .mat-body h2,
+  .mat-body-1 h2,
+  .mat-typography h2 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #555;
+  }
+
+  h3,
+  .mat-body h3,
+  .mat-body-1 h3,
+  .mat-typography h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: #555;
+  }
+
+  q {
+    font-size: 2rem;
+    font-style: italic;
+    color: #777;
+  }
+
+  h4,
+  .mat-body h4,
+  .mat-body-1 h4,
+  .mat-typography h4 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #555;
+    color: #555;
+  }
+
+  h5,
+  .mat-body h5,
+  .mat-body-1 h5,
+  .mat-typography h5 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #555;
+  }
+
+  p,
+  .mat-body p,
+  .mat-body-1 p,
+  .mat-typography p,
+  .mat-form-field,
+  li {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #555;
+  }
+
+  h6,
+  .mat-body h6,
+  .mat-body-1 h6,
+  .mat-typography h6 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff5f5;
+  }
+
+  .mat-icon {
+    font-size: 2.2rem;
+    vertical-align: middle;
+  }
+
+  /* STATUS CLASS */
+
+  .history {
+    color: #aaa !important;
+  }
+
+  .send {
+    color: $Green700 !important;
+  }
+
+  .clear {
+    color: $Red300 !important;
+  }
+
+  .done,
+  .trueColor {
+    color: $Indigo300 !important;
+  }
+
+  .falseColor {
+    color: #aaa !important;
+  }
+}

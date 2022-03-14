@@ -1,179 +1,191 @@
-<div class="container" *ngIf="(Jobs$ |async)![0] as job">
-  <section>
-    <article>
-      <!-- INFO 1 -->
-      <mat-card id='info1'>
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-        <article class='line1'>
-          <article class='name_status'>
-            <!-- FAV + NAME -->
-            <mat-icon [class]='{trueColor : job.favorite, falseColor : !job.favorite}'>{{ job.favorite ? icon.yesFav :
-              icon.noFav}}</mat-icon>
-            <article class='textLine1'>
-              <h4> {{job.name | titlecase}}</h4>
+  <div [class]='{
+  container: true,
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}' *ngIf="(Jobs$ |async)![0] as job">
+    <section>
+      <article>
+        <!-- INFO 1 -->
+        <mat-card id='info1'>
 
-              <!-- STATUS -->
-              <p class='history' *ngIf="job.status == 'history'">{{'JOB.DESCRIPTION.statusWait' | translate}}</p>
-              <p class='send' *ngIf="job.status == 'send'">{{'JOB.DESCRIPTION.statusSend' | translate}}
-              </p>
-              <p class='done' *ngIf="job.status == 'done'">{{'JOB.DESCRIPTION.statusYes' | translate}}</p>
-              <p class='clear' *ngIf="job.status == 'clear'">{{'JOB.DESCRIPTION.statusNo' | translate}}</p>
+          <article>
+            <article class='name_status'>
+              <!-- FAV + NAME -->
+              <mat-icon [class]='{trueColor : job.favorite, falseColor : !job.favorite}'>{{ job.favorite ? icon.yesFav :
+                icon.noFav}}</mat-icon>
+              <article class='textLine1'>
+                <h4> {{job.name | titlecase}}</h4>
+
+                <!-- STATUS -->
+                <p class='history' *ngIf="job.status == 'history'">{{'JOB.DESCRIPTION.statusWait' | translate}}</p>
+                <p class='send' *ngIf="job.status == 'send'">{{'JOB.DESCRIPTION.statusSend' | translate}}
+                </p>
+                <p class='done' *ngIf="job.status == 'done'">{{'JOB.DESCRIPTION.statusYes' | translate}}</p>
+                <p class='clear' *ngIf="job.status == 'clear'">{{'JOB.DESCRIPTION.statusNo' | translate}}</p>
+              </article>
+            </article>
+
+            <article class="textLine1 textLine2">
+              <h5>{{job.work | titlecase}}</h5>
+              <p>{{job.type | titlecase}}</p>
             </article>
           </article>
 
-          <article class="textLine1 textLine2">
-            <h5>{{job.work | titlecase}}</h5>
-            <p>{{job.type | titlecase}}</p>
-          </article>
-        </article>
 
+          <!-- LINE 2 -->
+          <article class="Line2">
+            <article class="card">
+              <p>{{'JOB.DESCRIPTION.date_1' | translate | titlecase}} :</p>
 
-        <!-- LINE 2 -->
-        <article class="Line2">
-          <article class="card">
-            <h5>{{'JOB.DESCRIPTION.date_1' | translate | titlecase}} :</h5>
+              <article class='date'>
+                <p>{{job.date_1! | timeStamp : 'MMM - y' |uppercase}}</p>
+                <h2>{{job.date_1! | timeStamp : 'dd'}}</h2>
+              </article>
 
-            <article class='date'>
-              <p>{{job.date_1! | timeStamp : 'MMMM - y' |uppercase}}</p>
-              <p>{{job.date_1! | timeStamp : 'dd'}}</p>
             </article>
+            <article class="card">
+              <p>{{'JOB.DESCRIPTION.date_2' | translate | titlecase}} :</p>
 
-          </article>
-          <article class="card">
-            <h5>{{'JOB.DESCRIPTION.date_2' | translate | titlecase}} :</h5>
-
-            <article class='date'>
-              <p>{{job.date_2! | timeStamp : 'MMMM - y' |uppercase}}</p>
-              <p>{{job.date_2! | timeStamp : 'dd'}}</p>
+              <article class='date'>
+                <p>{{job.date_2! | timeStamp : 'MMM - y' |uppercase}}</p>
+                <h2>{{job.date_2! | timeStamp : 'dd'}}</h2>
+              </article>
             </article>
           </article>
-        </article>
 
 
 
-      </mat-card>
+        </mat-card>
 
-      <!-- NOTE-->
-      <mat-card id='note'>
-        <h4>{{'JOB.DESCRIPTION.note' | translate | uppercase}} :
-          <app-note></app-note>
-        </h4>
-        <p>{{job.note}}</p>
-      </mat-card>
-    </article>
-
-
-    <!-- APPLICATION MESSAGE-->
-    <mat-card id='appMsg'>
-      <h4>{{'JOB.applicationMessage' | translate | uppercase}} :
-        <app-appmsg></app-appmsg>
-      </h4>
-      <article id='mail'>
-        <article id="to">
-          <h5>{{'receiver' | translate | uppercase}}</h5>
-          <p>{{job.name | titlecase}}
-          </p>
-          <button mat-button [cdkCopyToClipboard]="job.applicationMessage!" (click)='openSnackBar()'>{{'BUTTON.copy' |
-            translate | titlecase}} <mat-icon>{{icon.copy}}</mat-icon></button>
-        </article>
-        <p>{{job.applicationMessage}}</p>
+        <!-- NOTE-->
+        <mat-card id='note'>
+          <h4>{{'JOB.DESCRIPTION.note' | translate | uppercase}} :
+            <app-note></app-note>
+          </h4>
+          <h6>{{job.note}}</h6>
+        </mat-card>
       </article>
-    </mat-card>
-
-  </section>
 
 
-  <section>
-    <!-- INFO 2-->
-    <mat-card id='info2'>
-      <h4>{{'info+' | translate | uppercase}} :
-        <app-info></app-info>
-      </h4>
+      <!-- APPLICATION MESSAGE-->
+      <mat-card id='appMsg'>
+        <h4>{{'JOB.applicationMessage' | translate | uppercase}} :
+          <app-appmsg></app-appmsg>
+        </h4>
+        <article id='mail'>
+          <article id="to">
+            <h5>{{'receiver' | translate | uppercase}}</h5>
+            <p>{{job.name | titlecase}}
+            </p>
+            <button mat-button [cdkCopyToClipboard]="job.applicationMessage!" (click)='openSnackBar()'>{{'BUTTON.copy' |
+              translate | titlecase}} <mat-icon>{{icon.copy}}</mat-icon></button>
+          </article>
+          <p id='message'>{{job.applicationMessage}}</p>
+        </article>
+      </mat-card>
 
-      <ul>
-        <!-- JOB NAME -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.workPlace}}</mat-icon> {{"JOB.name" | translate | titlecase}} :
-          </h5>
-          <p>{{job.name | titlecase}}</p>
-        </li>
-        <!-- JOB WORK -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.work}}</mat-icon> {{"JOB.work" | translate | titlecase}} :
-          </h5>
-          <p>{{job.work | titlecase}}</p>
-        </li>
-        <!-- JOB TYPE -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.type}}</mat-icon> {{"JOB.type" | translate | titlecase}} :
-          </h5>
-          <p>{{job.type |uppercase}}</p>
-        </li>
-        <!-- JOB STATUS -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.status}}</mat-icon> {{"JOB.statut" | translate | titlecase}} :
-          </h5>
-          <p class='history' *ngIf="job.status == 'history'">{{'JOB.DESCRIPTION.statusWaitLong' | translate}}</p>
-          <p class='send' *ngIf="job.status == 'send'">{{'JOB.DESCRIPTION.statusSendLong' | translate}}
-          </p>
-          <p class='done' *ngIf="job.status == 'done'">{{'JOB.DESCRIPTION.statusYesLong' | translate}}</p>
-          <p class='clear' *ngIf="job.status == 'clear'">{{'JOB.DESCRIPTION.statusNoLong' | translate}}</p>
-        </li>
-        <!-- JOB ADRESS -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.adress}}</mat-icon> {{"JOB.DESCRIPTION.adress" | translate}} :
-          </h5>
-          <p>{{job.adress |lowercase}}</p>
-        </li>
-        <!-- JOB WEB -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.web}}</mat-icon> {{"JOB.web" | translate | titlecase}} :
-          </h5>
-          <a [href]="job.web" target='_blank'>{{job | link }}</a>
-        </li>
-        <!-- JOB CONTACT -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.contact}}</mat-icon> {{"JOB.contact" | translate}} :
-          </h5>
-          <p>{{job.contact |titlecase}}</p>
-        </li>
-        <!-- JOB TEL -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.tel}}</mat-icon> {{"JOB.tel" | translate}} :
-          </h5>
-          <p>{{job.tel}}</p>
-        </li>
-        <!-- JOB MAIL -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.mail}}</mat-icon> {{"JOB.mail" | translate}} :
-          </h5>
-          <a [href]="'mailto:' + job.mail">{{job.mail |lowercase}}</a>
-        </li>
-        <!-- JOB DATE_1 -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.date_1}}</mat-icon> {{"JOB.DESCRIPTION.date_1" | translate}} :
-          </h5>
-          <p>{{ job.date_1! |timeStamp : 'dd MMMM y'}}</p>
-        </li>
-        <!-- JOB DATE_2 -->
-        <li>
-          <h5>
-            <mat-icon>{{icon.date_2}}</mat-icon> {{"JOB.DESCRIPTION.date_2" | translate}} :
-          </h5>
-          <p>{{ job.date_2! |timeStamp : 'dd MMMM y'}}</p>
-        </li>
-      </ul>
-    </mat-card>
+    </section>
 
-  </section>
-</div>
+
+    <section>
+      <!-- INFO 2-->
+      <mat-card id='info2'>
+        <h4>{{'info+' | translate | uppercase}} :
+          <app-info></app-info>
+        </h4>
+
+        <ul>
+          <!-- JOB NAME -->
+          <li>
+            <h5>
+              <mat-icon>{{icon.workPlace}}</mat-icon> {{"JOB.name" | translate | titlecase}} :
+            </h5>
+            <p>{{job.name | titlecase}}</p>
+          </li>
+          <!-- JOB WORK -->
+          <li>
+            <h5 [class]='{disable : !job.work}'>
+              <mat-icon>{{icon.work}}</mat-icon> {{"JOB.work" | translate | titlecase}} :
+            </h5>
+            <p>{{job.work | titlecase}}</p>
+          </li>
+          <!-- JOB TYPE -->
+          <li>
+            <h5 [class]='{disable : !job.type}'>
+              <mat-icon>{{icon.type}}</mat-icon> {{"JOB.type" | translate | titlecase}} :
+            </h5>
+            <p>{{job.type |uppercase}}</p>
+          </li>
+          <!-- JOB STATUS -->
+          <li>
+            <h5>
+              <mat-icon>{{icon.status}}</mat-icon> {{"JOB.statut" | translate | titlecase}} :
+            </h5>
+            <p class='history' *ngIf="job.status == 'history'">{{'JOB.DESCRIPTION.statusWaitLong' | translate}}</p>
+            <p class='send' *ngIf="job.status == 'send'">{{'JOB.DESCRIPTION.statusSendLong' | translate}}
+            </p>
+            <p class='done' *ngIf="job.status == 'done'">{{'JOB.DESCRIPTION.statusYesLong' | translate}}</p>
+            <p class='clear' *ngIf="job.status == 'clear'">{{'JOB.DESCRIPTION.statusNoLong' | translate}}</p>
+          </li>
+          <!-- JOB ADRESS -->
+          <li>
+            <h5 [class]='{disable : !job.adress}'>
+              <mat-icon>{{icon.adress}}</mat-icon> {{"JOB.DESCRIPTION.adress" | translate}} :
+            </h5>
+            <p>{{job.adress |lowercase}}</p>
+          </li>
+          <!-- JOB WEB -->
+          <li>
+            <h5 [class]='{disable : !job.web}'>
+              <mat-icon>{{icon.web}}</mat-icon> {{"JOB.web" | translate | titlecase}} :
+            </h5>
+            <a [href]="job.web" target='_blank'>{{job | link }}</a>
+          </li>
+          <!-- JOB CONTACT -->
+          <li>
+            <h5 [class]='{disable : !job.contact}'>
+              <mat-icon>{{icon.contact}}</mat-icon> {{"JOB.contact" | translate}} :
+            </h5>
+            <p>{{job.contact |titlecase}}</p>
+          </li>
+          <!-- JOB TEL -->
+          <li>
+            <h5 [class]='{disable : !job.tel}'>
+              <mat-icon>{{icon.tel}}</mat-icon> {{"JOB.tel" | translate}} :
+            </h5>
+            <p>{{job.tel}}</p>
+          </li>
+          <!-- JOB MAIL -->
+          <li>
+            <h5 [class]='{disable : !job.mail}'>
+              <mat-icon>{{icon.mail}}</mat-icon> {{"JOB.mail" | translate}} :
+            </h5>
+            <a [href]="'mailto:' + job.mail">{{job.mail |lowercase}}</a>
+          </li>
+          <!-- JOB DATE_1 -->
+          <li>
+            <h5 [class]='{disable : !job.date_1}'>
+              <mat-icon>{{icon.date_1}}</mat-icon> {{"JOB.DESCRIPTION.date_1" | translate}} :
+            </h5>
+            <p>{{ job.date_1! |timeStamp : 'dd MMMM y'}}</p>
+          </li>
+          <!-- JOB DATE_2 -->
+          <li>
+            <h5 [class]='{disable : !job.date_2}'>
+              <mat-icon>{{icon.date_2}}</mat-icon> {{"JOB.DESCRIPTION.date_2" | translate}} :
+            </h5>
+            <p>{{ job.date_2! |timeStamp : 'dd MMMM y'}}</p>
+          </li>
+        </ul>
+      </mat-card>
+
+    </section>
+  </div>
+</ng-container>
