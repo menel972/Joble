@@ -3,6 +3,7 @@ import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/user.service';
 import { User } from 'src/app/core/user';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-profile',
@@ -14,9 +15,17 @@ export class ProfileComponent implements OnInit {
   // ENUM ICON
   icon = icon;
 
+ // BREAKPOINT
+ Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+ Large$ = this.breakpoint.observe(Breakpoints.Large);
+ XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
   profileForm !: FormGroup;
 
-  constructor(private user: UserService) { }
+  constructor(
+    private user: UserService,
+    private breakpoint: BreakpointObserver
+    ) { }
 
   ngOnInit(): void {
     this.user.getCurrentUser$();
