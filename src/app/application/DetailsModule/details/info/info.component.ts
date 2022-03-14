@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -15,15 +16,20 @@ import { map } from 'rxjs';
 })
 export class InfoComponent implements OnInit {
 
-    // ENUM ICON
-    icon = icon;
+ // ENUM ICON
+ icon = icon;
 
-      // CURRENT JOB
-id !: string | null;
+  // CURRENT JOB
+  id !: string | null;
 
-job !: Job;
+  job !: Job;
 
-constructor(public dialog: MatDialog, private crud: CRUDService, private route: ActivatedRoute) { }
+  constructor(
+    public dialog: MatDialog,
+    private crud: CRUDService,
+    private route: ActivatedRoute,
+    private breakpoint: BreakpointObserver
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap) => this.id = param.get('id'));
@@ -34,11 +40,19 @@ constructor(public dialog: MatDialog, private crud: CRUDService, private route: 
   }
 
   // OPEN INFO DIALOG
-openInfoDialog(): void {
-  this.dialog.open(DetailsInfoDialog, {
-    height: '95vh',
-    width: '55%',
-    data : {job : this.job} });
+  openInfoDialog(): void {
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+      this.dialog.open(DetailsInfoDialog, { height: '70vh', width: '65%', data : {job : this.job}});
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.Large)) {
+      this.dialog.open(DetailsInfoDialog, { height: '70vh', width: '60%', data : {job : this.job}});
+    }
+
+    if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+      this.dialog.open(DetailsInfoDialog, { height: '70vh', width: '50%', data : {job : this.job}});
+    }
+
 }
 
 }
@@ -56,10 +70,19 @@ export class DetailsInfoDialog {
   constructor(
     public dialogRef: MatDialogRef<DetailsInfoDialog>,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private crud: CRUDService, private translate: TranslateService, private snackBar: MatSnackBar) {}
+    private crud: CRUDService,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar,
+    private breakpoint: BreakpointObserver
+  ) {}
 
     // ENUM ICON
     icon = icon;
+
+ // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   infoForm !: FormGroup;
 
