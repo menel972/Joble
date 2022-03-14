@@ -112,10 +112,26 @@ constructor(
 
 // DIALOG
 openLogoutDialog(): void {
-  this.dialog.open(LogoutDialog, {
-    height: '35vh',
-    width: '25%'
-  });
+  if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+    this.dialog.open(LogoutDialog, {
+      height: '35vh',
+      width: '40%'
+    });
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(LogoutDialog, {
+      height: '35vh',
+      width: '35%'
+    });
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+    this.dialog.open(LogoutDialog, {
+      height: '35vh',
+      width: '25%'
+    });
+  }
 }
 }
 
@@ -131,11 +147,16 @@ export class LogoutDialog implements OnInit {
 
   // ENUM ICON
   icon = icon;
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   constructor(
     private dialogRef: MatDialogRef<LogoutDialog>,
-    private auth: AuthService
-    ) {}
+    private auth: AuthService,
+    private breakpoint: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
   }
