@@ -1,94 +1,128 @@
-<div class="container">
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-  <!-- TITLE -->
-<article class='flex-row just-btwn align-center'>
-  <article>
-    <h2>{{'dashboard' | translate |uppercase}} {{'addTitle' |translate}}</h2>
-  </article>
-  <article>
-    <mat-icon (click)='Close()'>{{icon.statusNo}}</mat-icon>
-  </article>
-</article>
+  <div [class]='{
+  container: true,
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}'>
 
-  <!-- ADD JOB FORM -->
-  <form [formGroup]='addForm' (ngSubmit)="submit()">
+    <!-- TITLE -->
+    <article class='flex-row just-btwn align-center'>
+      <article>
+        <h2>{{'dashboard' | translate |uppercase}} {{'addTitle' |translate}}</h2>
+      </article>
+      <article>
+        <mat-icon (click)='Close()'>{{icon.statusNo}}</mat-icon>
+      </article>
+    </article>
 
-    <!-- COL-1 -->
-    <section>
-      <!-- NAME -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.name}'> <mat-icon >{{icon.workPlace}}</mat-icon>{{'JOB.name' | translate | titlecase}}</mat-label>
-        <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.name' | translate" formControlName="name">
-      </mat-form-field>
+    <!-- ADD JOB FORM -->
+    <form [formGroup]='addForm' (ngSubmit)="submit()">
 
-      <!-- WORK -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.work}'> <mat-icon>{{icon.work}}</mat-icon>{{'JOB.work' | translate | titlecase}}</mat-label>
-        <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.work' | translate" formControlName="work">
-      </mat-form-field>
+      <!-- COL-1 -->
+      <section>
+        <!-- NAME -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.name}'>
+            <mat-icon>{{icon.workPlace}}</mat-icon>{{'JOB.name' | translate | titlecase}}
+          </mat-label>
+          <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.name' | translate" formControlName="name">
+        </mat-form-field>
 
-      <!-- TYPE -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.type}'> <mat-icon>{{icon.type}}</mat-icon>{{'JOB.type' | translate | titlecase}}</mat-label>
-        <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.type' | translate" formControlName="type">
-      </mat-form-field>
+        <!-- WORK -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.work}'>
+            <mat-icon>{{icon.work}}</mat-icon>{{'JOB.work' | translate | titlecase}}
+          </mat-label>
+          <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.work' | translate" formControlName="work">
+        </mat-form-field>
 
-      <!-- CITY -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.city}'> <mat-icon>{{icon.city}}</mat-icon>{{'JOB.city' | translate | titlecase}}</mat-label>
-        <input type='text' matInput [placeholder]="'JOB.city' | translate | titlecase" formControlName="city">
-      </mat-form-field>
+        <!-- TYPE -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.type}'>
+            <mat-icon>{{icon.type}}</mat-icon>{{'JOB.type' | translate | titlecase}}
+          </mat-label>
+          <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.type' | translate" formControlName="type">
+        </mat-form-field>
 
-    </section>
+        <!-- CITY -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.city}'>
+            <mat-icon>{{icon.city}}</mat-icon>{{'JOB.city' | translate | titlecase}}
+          </mat-label>
+          <input type='text' matInput [placeholder]="'JOB.city' | translate | titlecase" formControlName="city">
+        </mat-form-field>
 
-
-    <!-- COL-2 -->
-    <section>
-      <!-- STATUS -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.status}'> <mat-icon>{{icon.status}}</mat-icon>
-          {{'JOB.statut' | translate | titlecase}}</mat-label>
-        <mat-select formControlName='status'>
-          <mat-option *ngFor="let status of status" [value]="status.value">
-            {{status.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-
-      <!-- FAVORITE -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.favorite}'> <mat-icon>{{icon.fav}}</mat-icon>{{'JOB.DESCRIPTION.favorite' | translate | titlecase}}</mat-label>
-        <mat-select  formControlName='favorite'>
-          <mat-option *ngFor="let fav of favs" [value]="fav.value">
-            {{fav.viewValue | titlecase}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      </section>
 
 
-      <!-- DATE_1 -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.date_1}'> <mat-icon>{{icon.date_1}}</mat-icon>{{'JOB.date_1' | translate | titlecase}}</mat-label>
-        <input  formControlName='date_1' matInput [matDatepicker]="picker1" [placeholder]="'JOB.DESCRIPTION.date_1' | translate" [disabled]="addForm.value.status == 'history' || !addForm.value.status">
-        <mat-datepicker-toggle matSuffix [for]="picker1">
-          <mat-icon matDatepickerToggleIcon>{{icon.date_1}}</mat-icon>
-        </mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
+      <!-- COL-2 -->
+      <section>
+        <!-- STATUS -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.status}'>
+            <mat-icon>{{icon.status}}</mat-icon>{{'JOB.statut' | translate | titlecase}}
+          </mat-label>
+          <mat-select formControlName='status'>
+            <mat-option *ngFor="let status of status" [value]="status.value">
+              {{status.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <!-- DATE_2 -->
-      <mat-form-field appearance="fill">
-        <mat-label [class]='{validate : addForm.value.date_2}'> <mat-icon>{{icon.date_2}}</mat-icon>{{'JOB.date_2' | translate | titlecase}}</mat-label>
-        <input  formControlName='date_2' [min]='addForm.value.date_1' matInput [matDatepicker]="picker2" [placeholder]="'JOB.DESCRIPTION.date_2' | translate" [disabled]="addForm.value.status == 'history' || !addForm.value.date_1">
-        <mat-datepicker-toggle matSuffix [for]="picker2">
-          <mat-icon matDatepickerToggleIcon>{{icon.date_2}}</mat-icon>
-        </mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
 
-    </section>
+        <!-- FAVORITE -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.favorite}'>
+            <mat-icon>{{icon.fav}}</mat-icon>{{'JOB.DESCRIPTION.favorite' | translate | titlecase}}
+          </mat-label>
+          <mat-select formControlName='favorite'>
+            <mat-option *ngFor="let fav of favs" [value]="fav.value">
+              {{fav.viewValue | titlecase}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-<button mat-button class='add' [disabled]="addForm.invalid">{{'BUTTON.add' | translate | titlecase}}  <mat-icon>{{icon.add}}</mat-icon></button>
-</form>
-</div>
+
+        <!-- DATE_1 -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.date_1}'>
+            <mat-icon>{{icon.date_1}}</mat-icon>{{'JOB.date_1' | translate | titlecase}}
+          </mat-label>
+          <input formControlName='date_1' matInput [matDatepicker]="picker1"
+            [placeholder]="'JOB.DESCRIPTION.date_1' | translate"
+            [disabled]="addForm.value.status == 'history' || !addForm.value.status">
+          <mat-datepicker-toggle matSuffix [for]="picker1">
+            <mat-icon matDatepickerToggleIcon>{{icon.date_1}}</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <!-- DATE_2 -->
+        <mat-form-field appearance="fill">
+          <mat-label [class]='{validate : addForm.value.date_2}'>
+            <mat-icon>{{icon.date_2}}</mat-icon>{{'JOB.date_2' | translate | titlecase}}
+          </mat-label>
+          <input formControlName='date_2' [min]='addForm.value.date_1' matInput [matDatepicker]="picker2"
+            [placeholder]="'JOB.DESCRIPTION.date_2' | translate"
+            [disabled]="addForm.value.status == 'history' || !addForm.value.date_1">
+          <mat-datepicker-toggle matSuffix [for]="picker2">
+            <mat-icon matDatepickerToggleIcon>{{icon.date_2}}</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+      </section>
+
+      <article>
+        <button mat-button class='add' [disabled]="addForm.invalid">{{'BUTTON.add' | translate | titlecase}} <mat-icon>
+            {{icon.add}}</mat-icon></button>
+      </article>
+    </form>
+  </div>
+</ng-container>

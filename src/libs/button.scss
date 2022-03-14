@@ -1,0 +1,67 @@
+.L {
+  .mat-button {
+    font-size: 1.4rem;
+    border: 1px solid #bbb !important;
+    background-color: #eee;
+    color: #555;
+
+    &:disabled {
+      color: #aaa !important;
+      background-color: #eee;
+
+      .mat-icon {
+        color: #aaa !important;
+      }
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+  .add {
+    background-color: $Indigo400;
+    color: $White;
+
+    .mat-icon {
+      color: $White;
+    }
+
+    &:hover {
+      background-color: $Indigo500;
+    }
+  }
+
+  .edit {
+    color: $Green700;
+
+    .mat-icon {
+      color: $Green700;
+    }
+
+    &:hover {
+      background-color: $LightGreen;
+    }
+  }
+
+  .delete {
+    color: $Red300;
+
+    .mat-icon {
+      color: $Red300;
+    }
+    &:hover {
+      background-color: $Orange;
+    }
+  }
+
+  .icnEdit {
+    .mat-icon {
+      color: $Green200;
+      font-size: 2rem;
+      transition: 0.3s;
+      &:hover {
+        color: $Green700;
+        font-size: 3rem;
+      }
+    }
+  }
+}
