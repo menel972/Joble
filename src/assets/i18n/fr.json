@@ -144,6 +144,12 @@
   "FOOTER": {
     "text1": "On veut rester en contact avec toi !",
     "text2": "Des nouvelles régulières et des conseils pour réussir ta recherche d'emploi :"
+  },
 
+  "RESPONSIVE": {
+    "title": "Oups !",
+    "subtitle": "On dirait que ton écran est trop petit...",
+    "explain": "Pour utiliser JOBLE de manière optimale vous devez vous connecter avec un écran plus grand.",
+    "explain2": "(Tablette au format paysage - Ordinateur portable - Ordinateur de bureau)"
   }
 }

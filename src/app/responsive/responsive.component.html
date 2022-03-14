@@ -1,0 +1,21 @@
+<ng-container *ngIf="{
+  XXS : XtraXtraSmall$ | async,
+  XS : XtraSmall$ | async,
+  S : Small$ |async
+} as BK">
+
+  <div class="{
+    container : true,
+    XXS : BK.XXS.matches,
+    XS : BK.XS.matches,
+    S : BK.S.matches
+  }">
+
+    <h2>{{'RESPONSIVE.title' | translate}}</h2>
+    <h3>{{'RESPONSIVE.subtitle' | translate}}</h3>
+    <h4>{{'RESPONSIVE.explain' | translate}}</h4>
+    <h5>{{'RESPONSIVE.explain2' | translate}}</h5>
+    <img src="" alt="image">
+
+  </div>
+</ng-container>
