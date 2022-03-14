@@ -134,7 +134,8 @@ export class DashboardAddDialog implements OnInit {
       favorite : new FormControl(),
       status : new FormControl('', Validators.required),
       date_1: new FormControl(),
-      date_2 : new FormControl()
+      date_2 : new FormControl(),
+      createdAt : new FormControl(new Date)
     });
   }
 
@@ -156,7 +157,8 @@ export class DashboardAddDialog implements OnInit {
       applicationMessage : null,
       note : null,
       date_1 : this.addForm.value.date_1 ? this.addForm.value.date_1 : null,
-      date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null
+      date_2 : this.addForm.value.date_2 ? this.addForm.value.date_2 : null,
+      createdAt: this.addForm.value.createdAt
     };
 
     this.crud.createJob(formValue);
