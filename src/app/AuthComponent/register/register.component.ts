@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { TranslateService } from '@ngx-translate/core';
 import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
@@ -18,10 +19,22 @@ export class RegisterComponent implements OnInit {
   // ENUM ICON
   icon = icon;
 
+  // BREAKPOINTS
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
   registerForm !: FormGroup;
   mdp = true;
 
-  constructor(private auth: AuthService, private user: UserService, private validator: ValidatorsService, private snackBar: MatSnackBar, private translate: TranslateService) { }
+  constructor(
+    private auth: AuthService,
+    private user: UserService,
+    private validator: ValidatorsService,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService,
+    private breakpoint: BreakpointObserver
+    ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({

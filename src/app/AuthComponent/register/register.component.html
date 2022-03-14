@@ -1,52 +1,66 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-  <!-- USERNAME -->
-  <mat-form-field appearance="standard" class='mt2'>
-    <mat-label [class]="{validate : registerForm.value.username}">{{'USER.username' | translate}}</mat-label>
-    <input [class]="{validate : registerForm.value.username}" formControlName='username' type="text" matInput>
-  </mat-form-field>
+  <div [class]='{
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}'>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-  <section>
-    <!-- FIRSTNAME -->
-    <mat-form-field appearance="standard">
-      <mat-label [class]="{validate : registerForm.value.firstName}">{{'USER.firstName' | translate}}</mat-label>
-      <input [class]="{validate : registerForm.value.firstName}" formControlName='firstName' type="text" matInput>
-    </mat-form-field>
+      <!-- USERNAME -->
+      <mat-form-field appearance="standard" class='mt2'>
+        <mat-label [class]="{validate : registerForm.value.username}">{{'USER.username' | translate}}</mat-label>
+        <input [class]="{validate : registerForm.value.username}" formControlName='username' type="text" matInput>
+      </mat-form-field>
 
-    <!-- LASTNAME -->
-    <mat-form-field appearance="standard">
-      <mat-label [class]="{validate : registerForm.value.lastName}">{{'USER.lastName' | translate}}</mat-label>
-      <input [class]="{validate : registerForm.value.lastName}" formControlName='lastName' type="text" matInput>
-    </mat-form-field>
-  </section>
+      <section>
+        <!-- FIRSTNAME -->
+        <mat-form-field appearance="standard">
+          <mat-label [class]="{validate : registerForm.value.firstName}">{{'USER.firstName' | translate}}</mat-label>
+          <input [class]="{validate : registerForm.value.firstName}" formControlName='firstName' type="text" matInput>
+        </mat-form-field>
 
-  <!-- AGE -->
-  <mat-form-field appearance="standard">
-    <mat-label [class]="{validate : registerForm.value.age}">{{'USER.age' | translate}}</mat-label>
-    <input [class]="{validate : registerForm.value.age}" formControlName='age' matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker">
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+        <!-- LASTNAME -->
+        <mat-form-field appearance="standard">
+          <mat-label [class]="{validate : registerForm.value.lastName}">{{'USER.lastName' | translate}}</mat-label>
+          <input [class]="{validate : registerForm.value.lastName}" formControlName='lastName' type="text" matInput>
+        </mat-form-field>
+      </section>
+
+      <!-- AGE -->
+      <mat-form-field appearance="standard">
+        <mat-label [class]="{validate : registerForm.value.age}">{{'USER.age' | translate}}</mat-label>
+        <input [class]="{validate : registerForm.value.age}" formControlName='age' matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
 
-  <section>
-    <!-- MAIL -->
-    <mat-form-field appearance="standard">
-      <mat-label [class]="{validate : registerForm.value.mail}">{{'USER.mail' | translate}}</mat-label>
-      <input [class]="{validate : registerForm.value.mail}" formControlName='mail' type="mail" matInput>
-    </mat-form-field>
+      <section>
+        <!-- MAIL -->
+        <mat-form-field appearance="standard">
+          <mat-label [class]="{validate : registerForm.value.mail}">{{'USER.mail' | translate}}</mat-label>
+          <input [class]="{validate : registerForm.value.mail}" formControlName='mail' type="mail" matInput>
+        </mat-form-field>
 
-    <!-- PASSWORD -->
-    <mat-form-field appearance="standard">
-      <mat-label [class]="{validate : registerForm.value.password}">{{'USER.mdp' |translate}}</mat-label>
-      <input formControlName='password' [type]="mdp ? 'password' : 'text'" [placeholder]="'regex' | translate" matInput>
-      <mat-icon matSuffix (click)='mdp = !mdp' class='linked'>{{icon.eye}}</mat-icon>
-    </mat-form-field>
-  </section>
+        <!-- PASSWORD -->
+        <mat-form-field appearance="standard">
+          <mat-label [class]="{validate : registerForm.value.password}">{{'USER.mdp' |translate}}</mat-label>
+          <input formControlName='password' [type]="mdp ? 'password' : 'text'" [placeholder]="'regex' | translate"
+            matInput>
+          <mat-icon matSuffix (click)='mdp = !mdp' class='linked'>{{icon.eye}}</mat-icon>
+        </mat-form-field>
+      </section>
 
-  <!-- SUBMIT -->
-  <article>
-    <button mat-button class='add' [disabled]='registerForm.invalid'>{{'BUTTON.register' | translate}}</button>
-  </article>
-</form>
+      <!-- SUBMIT -->
+      <article>
+        <button mat-button class='add' [disabled]='registerForm.invalid'>{{'BUTTON.register' | translate}}</button>
+      </article>
+    </form>
+  </div>
+</ng-container>

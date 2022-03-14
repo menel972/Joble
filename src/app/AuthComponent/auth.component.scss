@@ -13,3 +13,19 @@
     padding: 2vh 2vw;
   }
 }
+
+/* BREAKPOINTS */
+
+// M
+.M {
+  .mat-card {
+    width: 50%;
+  }
+}
+
+// XL
+.XL {
+  .mat-card {
+    width: 35%;
+  }
+}
