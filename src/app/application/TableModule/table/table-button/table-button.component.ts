@@ -122,6 +122,7 @@ export class DashboardAddDialog implements OnInit {
   // FAVORITE SELECT
   favs = [
   {value : true, viewValue: this.translate.instant('BUTTON.add') },
+
   {value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
 
   ngOnInit(): void {
@@ -281,7 +282,8 @@ ngOnInit(): void {
       applicationMessage : this.currentJob.applicationMessage ? this.currentJob.applicationMessage : null,
       note : this.currentJob.note ? this.currentJob.note : null,
       date_1 : this.editForm.value.date_1 ? this.editForm.value.date_1 : null,
-      date_2 : this.editForm.value.date_2 ? this.editForm.value.date_2 : null
+      date_2 : this.editForm.value.date_2 ? this.editForm.value.date_2 : null,
+      createdAt: this.currentJob.createdAt
     };
 
     this.crud.updateJob(formValue);

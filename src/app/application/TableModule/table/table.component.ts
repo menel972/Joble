@@ -20,14 +20,15 @@ export class TableComponent implements OnInit {
   /* TABLE */
 
   // JOB LIST DATA
-  dataBase = [{
+  dataBase: Job[] = [{
     userId: ' ',
     favorite: true,
     name: 'JOB.DESCRIPTION.name',
     status: 'JOB.statut',
     work: 'JOB.DESCRIPTION.work',
     type: 'JOB.DESCRIPTION.type',
-    city: 'JOB.city'
+    city: 'JOB.city',
+    createdAt: null
   }];
   dataSource !: Job[];
   jobName !: string;
