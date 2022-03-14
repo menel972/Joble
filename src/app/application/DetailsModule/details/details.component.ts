@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { CRUDService } from 'src/app/shared/crud.service';
@@ -16,6 +17,11 @@ export class DetailsComponent implements OnInit {
   // ENUM ICON
   icon = icon;
 
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
 // CURRENT JOB
 id !: string | null;
 
@@ -23,7 +29,13 @@ Jobs$ = this.crud.readAllJobs$().pipe(
   map(jobs => jobs.filter(job => job.id === this.id))
 );
 
-  constructor(private crud: CRUDService, private route: ActivatedRoute, private translate: TranslateService, private snackBar: MatSnackBar) { }
+  constructor(
+    private crud: CRUDService,
+    private route: ActivatedRoute,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar,
+    private breakpoint: BreakpointObserver
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap) => this.id = param.get('id'));

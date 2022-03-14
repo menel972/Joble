@@ -8,6 +8,7 @@ import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-appmsg',
@@ -24,7 +25,12 @@ id !: string | null;
 
 job !: Job;
 
-    constructor(public dialog: MatDialog, private crud: CRUDService, private route: ActivatedRoute) { }
+    constructor(
+      public dialog: MatDialog,
+      private crud: CRUDService,
+      private route: ActivatedRoute,
+      private breakpoint: BreakpointObserver
+    ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap) => this.id = param.get('id'));
@@ -36,10 +42,17 @@ job !: Job;
 
   // OPEN APP MSG DIALOG
 openAppMsgDialog(): void {
-  this.dialog.open(DetailsAppMsgDialog, {
-  height: '65vh',
-  width: '50%',
-  data : {job : this.job} });
+  if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+    this.dialog.open(DetailsAppMsgDialog, { height: '70vh', width: '65%', data : {job : this.job}});
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(DetailsAppMsgDialog, { height: '70vh', width: '60%', data : {job : this.job}});
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+    this.dialog.open(DetailsAppMsgDialog, { height: '70vh', width: '50%', data : {job : this.job}});
+  }
 }
 }
 
@@ -55,10 +68,19 @@ export class DetailsAppMsgDialog implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<DetailsAppMsgDialog>,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private crud: CRUDService, private translate: TranslateService, private snackBar: MatSnackBar) {}
+    private crud: CRUDService,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar,
+    private breakpoint: BreakpointObserver
+  ) {}
 
   // ENUM ICON
   icon = icon;
+
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   appMsgForm !: FormGroup;
 
