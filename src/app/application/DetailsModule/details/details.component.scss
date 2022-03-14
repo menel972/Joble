@@ -8,7 +8,8 @@
 }
 .container {
   padding: 2vh 1vw;
-  height: 90vh;
+  height: 95vh;
+  box-sizing: border-box;
   display: flex;
 
   // SNACK-BAR
@@ -16,6 +17,7 @@
   section {
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 
     &:first-of-type {
       flex: 70%;
@@ -35,6 +37,7 @@
     // MAT-CARDS
     .mat-card {
       padding: 3vh 2vw;
+      box-sizing: border-box;
       h4 {
         display: flex;
         justify-content: space-between;
@@ -143,23 +146,35 @@
     // MAT-CARD INFO2
     #info2 {
       height: 100%;
+      box-sizing: border-box;
       ul {
         height: 95%;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
 
         li {
+          box-sizing: border-box;
           display: flex;
-          align-items: baseline;
+          align-items: center;
+
+          h5 {
+            flex: 45%;
+            margin-right: 0.5vw;
+          }
+
+          .disable {
+            color: #999 !important;
+          }
 
           .mat-icon {
-            vertical-align: middle;
+            vertical-align: text-top;
           }
 
           p,
           a {
-            margin-left: 0.3vw;
+            flex: 55%;
           }
           a {
             color: $Indigo600;
@@ -171,24 +186,34 @@
     // MAT-CARD APPMSG
     #appMsg {
       flex: 50%;
-
-      p:last-of-type {
-        flex: 90%;
-        padding-top: 2vh;
-        font-family: 'Saira', sans-serif;
-        letter-spacing: 0.1vh;
-      }
+      box-sizing: border-box;
 
       #mail {
         margin-top: 0.5vh;
         padding: 2vh 1vw;
-        height: 75%;
+        height: 35vh;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         border: 1px solid #ccc;
 
+        #message {
+          margin-top: 1vh;
+          padding-top: 1vh;
+          padding-right: 0.2vw;
+          font-family: 'Saira', sans-serif;
+          overflow: scroll;
+        }
+
+        p {
+          flex: 90%;
+          box-sizing: border-box;
+          letter-spacing: 0.1vh;
+        }
+
         #to {
           display: flex;
+          align-items: flex-end;
           flex: 10%;
 
           h5 {
@@ -197,6 +222,7 @@
           }
 
           p {
+            padding-bottom: 1vh;
             margin: 0 1vw;
             border-bottom: 1px solid #ccc;
             color: $Indigo300;
@@ -253,11 +279,44 @@
       }
     }
   }
+
+  #info2 {
+    h4 {
+      font-size: 1.7rem;
+    }
+    ul {
+      li {
+        margin-bottom: 1vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        h5 {
+          font-weight: 500;
+        }
+
+        .mat-icon {
+          vertical-align: sub !important;
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 
 // XL
 .XL {
   #info1 .name_status .mat-icon {
     font-size: 5rem !important;
+  }
+
+  #info2 ul {
+    h5 {
+      line-height: 1.2;
+    }
   }
 }
