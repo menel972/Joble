@@ -122,6 +122,7 @@ export class DashboardAddDialog implements OnInit {
   // FAVORITE SELECT
   favs = [
   {value : true, viewValue: this.translate.instant('BUTTON.add') },
+
   {value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
 
   ngOnInit(): void {
