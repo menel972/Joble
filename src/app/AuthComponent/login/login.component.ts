@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { icon } from 'src/app/shared/lexique';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,11 +14,17 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private validator: ValidatorsService
-    ) { }
+    private validator: ValidatorsService,
+    private breakpoint: BreakpointObserver
+  ) { }
 
 // ENUM ICON
   icon = icon;
+
+  // BREAKPOINTS
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   loginForm !: FormGroup;
   mdp = true;

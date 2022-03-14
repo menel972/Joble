@@ -1,21 +1,35 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-  <!-- MAIL -->
-  <mat-form-field appearance="standard">
-    <mat-label [class]="{validate : loginForm.value.mail.valid}">{{'USER.mail' | translate}}</mat-label>
-    <input [class]="{validate : loginForm.value.mail}" formControlName='mail' type="mail" matInput>
-  </mat-form-field>
+  <div [class]='{
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}'>
 
-  <!-- PASSWORD -->
-  <mat-form-field appearance="standard">
-    <mat-label [class]="{validate : loginForm.value.password.valid}">{{'USER.mdp' |translate}}</mat-label>
-    <input formControlName='password' [type]="mdp ? 'password' : 'text'" matInput>
-    <mat-icon matSuffix (click)='mdp = !mdp' class='linked'>{{icon.eye}}</mat-icon>
-  </mat-form-field>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-  <!-- SUBMIT -->
-  <article>
-    <button mat-button class='add' [disabled]="loginForm.invalid">{{'BUTTON.login'
-      | translate}}</button>
-  </article>
-</form>
+      <!-- MAIL -->
+      <mat-form-field appearance="standard">
+        <mat-label [class]="{validate : loginForm.value.mail.valid}">{{'USER.mail' | translate}}</mat-label>
+        <input [class]="{validate : loginForm.value.mail}" formControlName='mail' type="mail" matInput>
+      </mat-form-field>
+
+      <!-- PASSWORD -->
+      <mat-form-field appearance="standard">
+        <mat-label [class]="{validate : loginForm.value.password.valid}">{{'USER.mdp' |translate}}</mat-label>
+        <input formControlName='password' [type]="mdp ? 'password' : 'text'" matInput>
+        <mat-icon matSuffix (click)='mdp = !mdp' class='linked'>{{icon.eye}}</mat-icon>
+      </mat-form-field>
+
+      <!-- SUBMIT -->
+      <article>
+        <button mat-button class='add' [disabled]="loginForm.invalid">{{'BUTTON.login'
+          | translate}}</button>
+      </article>
+    </form>
+  </div>
+</ng-container>
