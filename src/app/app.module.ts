@@ -42,6 +42,7 @@ import { AuthComponent } from './AuthComponent/auth.component';
 import { LoginComponent } from './AuthComponent/login/login.component';
 import { RegisterComponent } from './AuthComponent/register/register.component';
 import { ResetComponent } from './AuthComponent/reset/reset.component';
+import { ResponsiveComponent } from './responsive/responsive.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -55,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    ResetComponent
+    ResetComponent,
+    ResponsiveComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
