@@ -133,6 +133,7 @@
     section .mat-form-field {
       width: 2.8vw;
       min-width: 35px;
+      margin-left: 0.5vw;
     }
   }
 }
@@ -149,7 +150,7 @@
   mat-toolbar {
     section .mat-form-field {
       width: 1.8vw !important;
-      // min-width: 42px !important;
+      min-width: 42px !important;
     }
     article {
       p,

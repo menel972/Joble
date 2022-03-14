@@ -82,7 +82,9 @@
     }
     #lang {
       .mat-form-field {
-        min-width: 3.5vw;
+        width: 3.5vw;
+        min-width: 35px !important;
+        margin-left: 0.5vw;
       }
     }
   }
