@@ -8,6 +8,7 @@ import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
 import { map } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-note',
@@ -19,11 +20,16 @@ export class NoteComponent implements OnInit {
   icon = icon;
 
   // CURRENT JOB
-id !: string | null;
+  id !: string | null;
 
 job !: Job;
 
-constructor(public dialog: MatDialog, private crud: CRUDService, private route: ActivatedRoute) { }
+  constructor(
+    public dialog: MatDialog,
+    private crud: CRUDService,
+    private route: ActivatedRoute,
+    private breakpoint: BreakpointObserver
+  ) { }
 
 ngOnInit(): void {
   this.route.paramMap.subscribe((param: ParamMap) => this.id = param.get('id'));
@@ -35,10 +41,17 @@ ngOnInit(): void {
 
   // OPEN NOTE DIALOG
 openNoteDialog(): void {
-  this.dialog.open(DetailsNoteDialog, {
-    height: '65vh',
-    width: '50%',
-    data : {job : this.job}});
+  if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+    this.dialog.open(DetailsNoteDialog, { height: '70vh', width: '65%', data : {job : this.job}});
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(DetailsNoteDialog, { height: '70vh', width: '60%', data : {job : this.job}});
+  }
+
+  if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+    this.dialog.open(DetailsNoteDialog, { height: '70vh', width: '50%', data : {job : this.job}});
+  }
 }
 }
 
@@ -55,10 +68,19 @@ export class DetailsNoteDialog implements OnInit {
     constructor(
       private dialogRef: MatDialogRef<DetailsNoteDialog>,
       @Inject(MAT_DIALOG_DATA) private data: any,
-      private crud: CRUDService, private translate: TranslateService, private snackBar: MatSnackBar) {}
+      private crud: CRUDService,
+      private translate: TranslateService,
+      private snackBar: MatSnackBar,
+      private breakpoint: BreakpointObserver
+    ) {}
 
     // ENUM ICON
     icon = icon;
+
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+  XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
     noteForm !: FormGroup;
 
@@ -89,7 +111,8 @@ editNote(): void {
       applicationMessage : this.data.job.applicationMessage ? this.data.job.applicationMessage : null,
       note : this.noteForm.value.note,
       date_1 : this.data.job.date_1 ? this.data.job.date_1 : null,
-      date_2 : this.data.job.date_2 ? this.data.job.date_2 : null
+      date_2 : this.data.job.date_2 ? this.data.job.date_2 : null,
+      createdAt: this.data.job.createdAt
     };
 
     this.crud.updateJob(formValue);

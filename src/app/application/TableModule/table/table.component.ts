@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,15 @@ import { Job } from 'src/app/shared/job';
 })
 export class TableComponent implements OnInit {
 
-  constructor( private crud: CRUDService) { }
+  constructor(
+    private crud: CRUDService,
+    private breakpoint: BreakpointObserver
+    ) { }
+
+  // BREAKPOINT
+  Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+  Large$ = this.breakpoint.observe(Breakpoints.Large);
+ XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
 
   // ENUM ICON
   icon = icon;
@@ -20,14 +29,15 @@ export class TableComponent implements OnInit {
   /* TABLE */
 
   // JOB LIST DATA
-  dataBase = [{
+  dataBase: Job[] = [{
     userId: ' ',
     favorite: true,
     name: 'JOB.DESCRIPTION.name',
     status: 'JOB.statut',
     work: 'JOB.DESCRIPTION.work',
     type: 'JOB.DESCRIPTION.type',
-    city: 'JOB.city'
+    city: 'JOB.city',
+    createdAt: null
   }];
   dataSource !: Job[];
   jobName !: string;
@@ -46,6 +56,11 @@ export class TableComponent implements OnInit {
     this.form = new FormGroup({
       search : new FormControl('')
     });
+
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+      this.displayedColumns.shift();
+      this.displayedColumns.pop();
+    }
   }
 
   setJob(job: Job): void {

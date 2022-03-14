@@ -1,28 +1,42 @@
+<ng-container *ngIf="{
+  M: Medium$ | async,
+  L: Large$ | async,
+  XL: XtraLarge$ | async
+} as BK">
 
-<div class="container">
+  <div [class]='{
+  container: true,
+  M: BK.M!.matches,
+  L: BK.L!.matches,
+  XL: BK.XL!.matches
+}'>
 
-  <!-- TITLE -->
-  <article class='flex-row just-btwn align-center'>
-    <article>
-      <h2>{{'info' | translate |uppercase}} {{'addAppMsg' |translate}}</h2>
+    <!-- TITLE -->
+    <article class='flex-row just-btwn align-center'>
+      <article>
+        <h2>{{'info' | translate |uppercase}} {{'addAppMsg' |translate}}</h2>
+      </article>
+      <article>
+        <mat-icon (click)='Close()'>{{icon.statusNo}}</mat-icon>
+      </article>
     </article>
-    <article>
-      <mat-icon (click)='Close()'>{{icon.statusNo}}</mat-icon>
-    </article>
-  </article>
 
 
-  <!-- EDIT NOTE FORM -->
-  <form [formGroup]='appMsgForm' (ngSubmit)="editNote()">
-    <mat-form-field appearance="fill">
-      <mat-label [class]='{validate : appMsgForm.value.note}'> <mat-icon >{{icon.note}}</mat-icon>{{'JOB.applicationMessage' | translate | titlecase}}</mat-label>
-<textarea matInput formControlName='appMsg'></textarea>
-    </mat-form-field>
+    <!-- EDIT NOTE FORM -->
+    <form [formGroup]='appMsgForm' (ngSubmit)="editNote()">
+      <mat-form-field appearance="fill">
+        <mat-label [class]='{validate : appMsgForm.value.note}'>
+          <mat-icon>{{icon.note}}</mat-icon>{{'JOB.applicationMessage' | translate | titlecase}}
+        </mat-label>
+        <textarea matInput formControlName='appMsg'></textarea>
+      </mat-form-field>
 
-<article>
-  <button mat-button class='edit'>{{'BUTTON.edit' | translate | titlecase}}  <mat-icon>{{icon.edit}}</mat-icon></button>
-</article>
+      <article>
+        <button mat-button class='edit'>{{'BUTTON.edit' | translate | titlecase}} <mat-icon>{{icon.edit}}</mat-icon>
+          </button>
+      </article>
     </form>
 
 
-</div>
+  </div>
+</ng-container>

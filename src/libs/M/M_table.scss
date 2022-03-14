@@ -1,47 +1,55 @@
-table {
-  width: 100%;
+.M {
+  table {
+    width: 100%;
 
-  //  COLUMNS
+    //  COLUMNS
 
-  th {
-    .mat-icon {
-      color: $Indigo400;
-    }
-  }
-
-  #index {
-    .mat-icon {
-      font-size: 1.8rem;
-      color: $Indigo100;
-      transition: all 0.4s;
-    }
-  }
-
-  // ROWS
-
-  .mat-row {
-    transition: all 0.4s;
-    &:hover {
-      cursor: pointer;
-      background-color: $Indigo50;
-      border-top: 2px solid #bbb;
-      border-bottom: 2px solid #bbb;
-
-      #index .mat-icon {
-        font-size: 2rem;
-        color: $Indigo300;
+    th {
+      .mat-icon {
+        color: $Indigo400;
       }
     }
-  }
 
-  // CELLS
+    #index {
+      .mat-icon {
+        font-size: 1.8rem;
+        color: $Indigo100;
+        transition: all 0.4s;
+      }
+    }
 
-  .mat-header-cell {
-    font-size: 1.5rem;
-    color: $Indigo400;
-    border-bottom: 1px solid #ccc;
-    .mat-icon {
-      vertical-align: middle;
+    // ROWS
+
+    .mat-row {
+      transition: all 0.4s;
+      &:hover {
+        cursor: pointer;
+        background-color: $Indigo50;
+        border-top: 2px solid #bbb;
+        border-bottom: 2px solid #bbb;
+
+        #index .mat-icon {
+          font-size: 2rem;
+          color: $Indigo300;
+        }
+      }
+    }
+
+    // CELLS
+
+    .mat-header-cell {
+      font-size: 1.5rem;
+      color: $Indigo400;
+      border-bottom: 1px solid #ccc;
+      .mat-icon {
+        vertical-align: sub;
+        font-size: 1.9rem;
+        margin-right: 0.3vw;
+      }
+    }
+
+    .mat-cell {
+      font-size: 1.3rem;
     }
   }
 }

@@ -17,7 +17,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     trigger('sidenav', [
       state('retract', style({
         width : '3.5vw',
-        minWidth : '3.5vw'
+        minWidth : '40px'
       })
       ),
       state('expend', style ({
@@ -30,16 +30,27 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   trigger('logo', [
     state('retract', style({
       width: '3vw',
-      paddingRight: '0.3vw'
+      minWidth: '33px'
     })
     ),
     state('expend', style({
-      width: '10vw',
-      paddingRight: '1vw'
+      width: '10vw'
     })),
     transition('retract => expend', animate(300)),
     transition('expend => retract', animate(200))
-  ])
+  ]),
+  trigger('classLogo', [
+    state('retract', style({
+      justifyContent: 'center'
+    })
+    ),
+    state('expend', style ({
+      justifyContent: 'flex-end',
+      paddingRight: '1vw'
+  })),
+  transition('retract => expend', animate(300) ),
+  transition('expend => retract', animate(200) )
+])
 ]
 })
 
@@ -49,35 +60,34 @@ export class ApplicationComponent implements OnInit {
   version = this.Version.version;
   correctif = this.Version.correctif;
 
-  user$ = this.user.currentUser$;
+user$ = this.user.currentUser$;
 
-  constructor(
-    private translate: TranslateService,
-    private router: Router,
-    private user: UserService,
-    private dialog: MatDialog,
-    private Version: VersionService,
-    private breakpoint: BreakpointObserver
-    ) {
-    this.router.events.subscribe( (event) => {
-      if (event instanceof NavigationEnd) {
-        if (router.url.includes('dashboard')) {
-          this.route = 'dashboard';
-        }
-        if (router.url.includes('details')) {
-          this.route = 'info';
-        }
-        if (router.url.includes('dahsboard')) {
-          this.route = 'dashboard';
-        }
-        if (router.url.includes('dahsboard')) {
-          this.route = 'dashboard';
-        }
-        if (router.url.includes('dahsboard')) {
-          this.route = 'dashboard';
-        }
-      }});
-  }
+   // BREAKPOINT
+   Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
+   Large$ = this.breakpoint.observe(Breakpoints.Large);
+   XtraLarge$ = this.breakpoint.observe(Breakpoints.XLarge);
+
+constructor(
+  private translate: TranslateService,
+  private router: Router,
+  private user: UserService,
+  private dialog: MatDialog,
+  private Version: VersionService,
+  private breakpoint: BreakpointObserver
+  ) {
+  this.router.events.subscribe( (event) => {
+    if (event instanceof NavigationEnd) {
+      if (router.url.includes('dashboard')) {
+        this.route = 'dashboard';
+      }
+      if (router.url.includes('details')) {
+        this.route = 'info';
+      }
+      if (router.url.includes('settings')) {
+        this.route = 'settings';
+      }
+    }});
+}
 
   // ENUM ICON
   icon = icon;

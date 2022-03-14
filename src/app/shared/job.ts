@@ -17,4 +17,5 @@ export interface Job {
   note ?: string | null;
   date_1 ?: Timestamp;
   date_2 ?: Timestamp;
+  createdAt: Timestamp | null;
 }
