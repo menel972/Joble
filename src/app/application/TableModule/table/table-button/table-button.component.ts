@@ -7,6 +7,7 @@ import { icon } from 'src/app/shared/lexique';
 import { Job } from 'src/app/shared/job';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ValidatorsService } from 'src/app/shared/validators.service';
 
 @Component({
   selector: 'app-table-button',
@@ -95,6 +96,7 @@ export class DashboardAddDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DashboardAddDialog>,
     private crud: CRUDService,
+    private validator: ValidatorsService,
     private translate: TranslateService,
     private snackBar: MatSnackBar,
     private breakpoint: BreakpointObserver
@@ -128,9 +130,9 @@ export class DashboardAddDialog implements OnInit {
   ngOnInit(): void {
     this.addForm = new FormGroup({
       name : new FormControl('', Validators.required),
-      type : new FormControl(),
-      work : new FormControl(),
-      city : new FormControl(),
+      work : new FormControl('', Validators.maxLength(15)),
+      type : new FormControl('', Validators.maxLength(15)),
+      city : new FormControl('', Validators.maxLength(15)),
       favorite : new FormControl(),
       status : new FormControl('', Validators.required),
       date_1: new FormControl(),
@@ -237,9 +239,9 @@ favs = [
 ngOnInit(): void {
   this.editForm = new FormGroup({
       name : new FormControl('', Validators.required),
-      type : new FormControl(),
-      work : new FormControl(),
-      city : new FormControl(),
+      type : new FormControl('', Validators.maxLength(15)),
+      work : new FormControl('', Validators.maxLength(15)),
+      city : new FormControl('', Validators.maxLength(15)),
       favorite : new FormControl(),
       status : new FormControl('', Validators.required),
       date_1: new FormControl(),
