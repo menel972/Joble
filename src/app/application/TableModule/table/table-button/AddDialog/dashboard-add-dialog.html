@@ -32,6 +32,9 @@
             <mat-icon>{{icon.workPlace}}</mat-icon>{{'JOB.name' | translate | titlecase}}
           </mat-label>
           <input type='text' matInput [placeholder]="'JOB.DESCRIPTION.name' | translate" formControlName="name">
+
+          <mat-error *ngIf="name?.touched && name?.errors!['required']">required</mat-error>
+          <mat-error *ngIf="name?.touched && name?.errors!['minLength']">minLength</mat-error>
         </mat-form-field>
 
         <!-- WORK -->
@@ -120,7 +123,7 @@
       </section>
 
       <article>
-        <button mat-button class='add' [disabled]="addForm.invalid">{{'BUTTON.add' | translate | titlecase}} <mat-icon>
+        <button mat-button class='add'>{{'BUTTON.add' | translate | titlecase}} <mat-icon>
             {{icon.add}}</mat-icon></button>
       </article>
     </form>

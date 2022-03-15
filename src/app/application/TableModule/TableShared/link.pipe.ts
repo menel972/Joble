@@ -6,8 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class LinkPipe implements PipeTransform {
 
-  // tslint:disable-next-line:no-multi-spaces
-  transform(job: Job): string  {
+  transform(job: Job): string {
 
     let link = '';
     if ( job.web == null) {

@@ -1,35 +1,34 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TestBed } from '@angular/core/testing';
+import { TranslateService } from '@ngx-translate/core';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
+describe('AppComponent', ( ) => {
+  let TranslateServiceSpy;
+
+  beforeEach( async () => {
+    TranslateServiceSpy = jasmine.createSpyObj('TranslateService', ['addLangs', 'setDefaultLang']);
+
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      providers: [
+        {provide: TranslateService, useValue: TranslateServiceSpy}
+      ]
     }).compileComponents();
+
+    TestBed.inject(TranslateService);
+  });
+
+  it('App title should be JOBLE', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const app = fixture.componentInstance;
+
+    expect(app.title).toEqual('JOBLE');
   });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'Joble'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Joble');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Joble app is running!');
   });
 });

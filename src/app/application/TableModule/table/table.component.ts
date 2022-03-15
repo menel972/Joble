@@ -71,12 +71,11 @@ export class TableComponent implements OnInit {
     this.crud.setCurrentJob(job);
   }
 
-  // tslint:disable-next-line:typedef
-  submit() {}
+  submit(): void {}
 
   // REMOVE THE FILTER
-  // tslint:disable-next-line:typedef
-  erased() {
+
+  erased(): void {
     this.form.setValue({search : ''});
   }
 

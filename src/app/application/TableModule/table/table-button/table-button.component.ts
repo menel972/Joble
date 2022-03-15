@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { CRUDService } from './../../../../shared/crud.service';
 import { Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
@@ -96,16 +96,19 @@ export class DashboardAddDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DashboardAddDialog>,
     private crud: CRUDService,
-    private validator: ValidatorsService,
     private translate: TranslateService,
     private snackBar: MatSnackBar,
     private breakpoint: BreakpointObserver
-    ) {}
+  ) {}
 
   // ENUM ICON
   icon = icon;
 
   addForm !: FormGroup;
+
+  get name(): AbstractControl | null {
+    return this.addForm.get('name');
+  }
 
     // BREAKPOINT
     Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
@@ -128,8 +131,9 @@ export class DashboardAddDialog implements OnInit {
   {value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
 
   ngOnInit(): void {
+
     this.addForm = new FormGroup({
-      name : new FormControl('', Validators.required),
+      name : new FormControl('', [Validators.required]),
       work : new FormControl('', Validators.maxLength(15)),
       type : new FormControl('', Validators.maxLength(15)),
       city : new FormControl('', Validators.maxLength(15)),
