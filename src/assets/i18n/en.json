@@ -146,10 +146,18 @@
     "text2": "Regular news and tips for a successful job search :"
   },
 
-  "RESPONSIVE": {
-    "title": "Whoops !",
-    "subtitle": "Looks like your screen is too small...",
-    "explain": "To use JOBLE optimally, you must log in with a larger screen.",
-    "explain2": "(Landscape tablet - Laptop - Desktop)"
+  "ERROR": {
+    "title": "Oops !",
+
+    "RESPONSIVE": {
+      "subtitle": "Looks like your screen is too small...",
+      "explain": "To use JOBLE optimally, you must log in with a larger screen.",
+      "explain2": "(Landscape tablet - Laptop - Desktop)"
+    },
+
+    "404": {
+      "subtitle": "Looks like you got lost...",
+      "explain": "Don't panic, follow us to your dashboard."
+    }
   }
 }

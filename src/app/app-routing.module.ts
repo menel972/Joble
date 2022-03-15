@@ -1,9 +1,9 @@
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ApplicationComponent } from './application/application.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './AuthComponent/auth.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { ErrorComponent } from './error/error.component';
 
 const ToLogin = () => redirectUnauthorizedTo(['connexion']);
 const ToApp = () => redirectUnauthorizedTo(['app']);
@@ -24,7 +24,8 @@ const routes: Routes = [
     { path: 'details/:name/:id', loadChildren: () => import('./application/DetailsModule/details.module').then(m => m.DetailsModule) },
     { path: 'settings', loadChildren: () => import('./application/SettingsModule/settings.module').then(m => m.SettingsModule)}
   ]},
-  { path: 'landingPage', loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule) }
+  { path: 'landingPage', loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule) },
+  { path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

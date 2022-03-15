@@ -1,0 +1,21 @@
+<ng-container *ngIf="{
+  M : Medium$ | async,
+  L : Large$ | async,
+  XL : XtraLarge$ |async
+} as BK">
+
+  <div class="{
+    container : true,
+    M : BK.M.matches,
+    L : BK.L.matches,
+    XL : BK.XL.matches
+  }">
+
+    <h2>{{'ERROR.title' | translate}}</h2>
+    <h3>{{'ERROR.404.subtitle' | translate}}</h3>
+    <h5>{{'ERROR.404.explain' | translate}}</h5>
+    <button mat-button class="add" routerLink="/app/dashboard">{{'dashboard' | translate}}</button>
+    <img src="" alt="image">
+
+  </div>
+</ng-container>
