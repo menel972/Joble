@@ -17,20 +17,20 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class AppmsgComponent implements OnInit {
 
-    // ENUM ICON
-    icon = icon;
+  // ENUM ICON
+  icon = icon;
 
-      // CURRENT JOB
-id !: string | null;
+ // CURRENT JOB
+  id !: string | null;
 
-job !: Job;
+  job !: Job;
 
-    constructor(
-      public dialog: MatDialog,
-      private crud: CRUDService,
-      private route: ActivatedRoute,
-      private breakpoint: BreakpointObserver
-    ) { }
+  constructor(
+    public dialog: MatDialog,
+    private crud: CRUDService,
+    private route: ActivatedRoute,
+    private breakpoint: BreakpointObserver
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap) => this.id = param.get('id'));
@@ -41,19 +41,19 @@ job !: Job;
   }
 
   // OPEN APP MSG DIALOG
-openAppMsgDialog(): void {
-  if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
-    this.dialog.open(DetailsAppMsgDialog, { height: '70vh', width: '65%', data : {job : this.job}});
-  }
+  openAppMsgDialog(): void {
+    if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
+      this.dialog.open(DetailsAppMsgDialog, { disableClose: true, height: '70vh', width: '65%', data : {job : this.job}});
+    }
 
-  if (this.breakpoint.isMatched(Breakpoints.Large)) {
-    this.dialog.open(DetailsAppMsgDialog, { height: '70vh', width: '60%', data : {job : this.job}});
-  }
+    if (this.breakpoint.isMatched(Breakpoints.Large)) {
+    this.dialog.open(DetailsAppMsgDialog, { disableClose: true, height: '70vh', width: '60%', data : {job : this.job}});
+    }
 
-  if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-    this.dialog.open(DetailsAppMsgDialog, { height: '70vh', width: '50%', data : {job : this.job}});
+    if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
+      this.dialog.open(DetailsAppMsgDialog, { disableClose: true, height: '70vh', width: '50%', data : {job : this.job}});
+    }
   }
-}
 }
 
 /* DetailsAppMsgDialog COMPONENT */
@@ -84,14 +84,15 @@ export class DetailsAppMsgDialog implements OnInit {
 
   appMsgForm !: FormGroup;
 
-ngOnInit(): void {
-
-  this.appMsgForm = new FormGroup({
+  ngOnInit(): void {
+    this.appMsgForm = new FormGroup({
       appMsg : new FormControl(this.data.job.applicationMessage)
     });
-}
 
-// APPMSG SUBMIT
+    this.dialogRef.backdropClick().subscribe(() => this.Close());
+  }
+
+  // APPMSG SUBMIT
   editNote(): void {
     const formValue: Job = {
       id: this.data.job.id,
@@ -119,18 +120,22 @@ ngOnInit(): void {
     this.Close();
   }
 
-        // SNACK-BAR
-        openSnackBar(): void {
-          this.snackBar.open(
-            ` ${this.translate.instant('JOB.applicationMessage')} ${this.translate.instant('BUTTON.edited')}`,
-            '', {
-              duration: 3000,
-              horizontalPosition: 'end'
-            });
-        }
+  // SNACK-BAR
+  openSnackBar(): void {
+    this.snackBar.open(
+      ` ${this.translate.instant('JOB.applicationMessage')} ${this.translate.instant('BUTTON.edited')}`,
+      '', {
+        duration: 3000,
+        horizontalPosition: 'end'
+      });
+  }
 
     // CLOSE THE WINDOW
   Close(): void {
-    this.dialogRef.close();
+    if (!this.appMsgForm.dirty) {
+      this.dialogRef.close();
+    } else if (this.appMsgForm.dirty && confirm(this.translate.instant('ERROR.DIALOG.confirm'))) {
+      this.dialogRef.close();
+    }
   }
 }

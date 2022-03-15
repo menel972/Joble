@@ -40,30 +40,30 @@ export class TableButtonComponent implements OnInit {
 // OPEN ADD DIALOG
   openAddDialog(): void {
     if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
-      this.dialog.open(DashboardAddDialog, { height: '70vh', width: '65%' });
+      this.dialog.open(DashboardAddDialog, { disableClose: true, height: '70vh', width: '65%' });
     }
 
     if (this.breakpoint.isMatched(Breakpoints.Large)) {
-      this.dialog.open(DashboardAddDialog, { height: '70vh', width: '60%' });
+      this.dialog.open(DashboardAddDialog, { disableClose: true, height: '70vh', width: '60%' });
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-      this.dialog.open(DashboardAddDialog, { height: '70vh', width: '50%' });
+      this.dialog.open(DashboardAddDialog, { disableClose: true, height: '70vh', width: '50%' });
     }
   }
 
 // OPEN EDIT DIALOG
   openEditDialog(): void {
     if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
-    this.dialog.open(DashboardEditDialog, { height: '70vh', width: '65%' });
+    this.dialog.open(DashboardEditDialog, { disableClose: true, height: '70vh', width: '65%' });
     }
 
     if (this.breakpoint.isMatched(Breakpoints.Large)) {
-    this.dialog.open(DashboardEditDialog, { height: '70vh', width: '60%' });
+    this.dialog.open(DashboardEditDialog, { disableClose: true, height: '70vh', width: '60%' });
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-    this.dialog.open(DashboardEditDialog, { height: '70vh', width: '50%' });
+    this.dialog.open(DashboardEditDialog, { disableClose: true, height: '70vh', width: '50%' });
     }
   }
 
@@ -139,6 +139,8 @@ export class DashboardAddDialog implements OnInit {
       date_2 : new FormControl(),
       createdAt : new FormControl(new Date)
     });
+
+    this.dialogRef.backdropClick().subscribe(() => this.Close());
   }
 
   // JOB SUBMIT
@@ -181,8 +183,13 @@ export class DashboardAddDialog implements OnInit {
 
   // CLOSE THE WINDOW
   Close(): void {
-    this.addForm.reset();
-    this.dialogRef.close();
+    if (!this.addForm.dirty) {
+      this.addForm.reset();
+      this.dialogRef.close();
+    } else if (this.addForm.dirty && confirm(this.translate.instant('ERROR.DIALOG.confirm'))) {
+      this.addForm.reset();
+      this.dialogRef.close();
+    }
   }
 }
 
@@ -247,6 +254,8 @@ ngOnInit(): void {
       date_1: new FormControl(),
       date_2 : new FormControl()
     });
+
+  this.dialogRef.backdropClick().subscribe(() => this.Close());
 }
 
   changeWindow (job: Job): void {
@@ -307,11 +316,19 @@ ngOnInit(): void {
 
     // CLOSE THE WINDOW
     Close(): void {
-      this.dialogRef.close();
+      if (!this.editForm.dirty) {
+        this.dialogRef.close();
+      } else if (this.editForm.dirty && confirm(this.translate.instant('ERROR.DIALOG.confirm'))) {
+        this.dialogRef.close();
+      }
     }
 
     Back(): void {
-      this.Window = false;
+      if (!this.editForm.dirty) {
+        this.Window = false;
+      } else if (this.editForm.dirty && confirm(this.translate.instant('ERROR.DIALOG.confirm'))) {
+        this.Window = false;
+      }
     }
 }
 

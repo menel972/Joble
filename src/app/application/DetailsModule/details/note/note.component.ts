@@ -42,15 +42,15 @@ ngOnInit(): void {
   // OPEN NOTE DIALOG
 openNoteDialog(): void {
   if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
-    this.dialog.open(DetailsNoteDialog, { height: '70vh', width: '65%', data : {job : this.job}});
+    this.dialog.open(DetailsNoteDialog, { disableClose: true, height: '70vh', width: '65%', data : {job : this.job}});
   }
 
   if (this.breakpoint.isMatched(Breakpoints.Large)) {
-    this.dialog.open(DetailsNoteDialog, { height: '70vh', width: '60%', data : {job : this.job}});
+    this.dialog.open(DetailsNoteDialog, { disableClose: true, height: '70vh', width: '60%', data : {job : this.job}});
   }
 
   if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-    this.dialog.open(DetailsNoteDialog, { height: '70vh', width: '50%', data : {job : this.job}});
+    this.dialog.open(DetailsNoteDialog, { disableClose: true, height: '70vh', width: '50%', data : {job : this.job}});
   }
 }
 }
@@ -90,6 +90,8 @@ export class DetailsNoteDialog implements OnInit {
     this.noteForm = new FormGroup({
     note: new FormControl(this.data.job.note)
   });
+
+    this.dialogRef.backdropClick().subscribe(() => this.Close());
 }
 
 // NOTE SUBMIT
@@ -120,19 +122,23 @@ editNote(): void {
     this.Close();
   }
 
-      // SNACK-BAR
-      openSnackBar(): void {
-        this.snackBar.open(
-          ` ${this.translate.instant('JOB.note')} ${this.translate.instant('BUTTON.edited')}`,
-          '', {
-            duration: 3000,
-            horizontalPosition: 'end'
-          });
-      }
+   // SNACK-BAR
+   openSnackBar(): void {
+     this.snackBar.open(
+       ` ${this.translate.instant('JOB.note')} ${this.translate.instant('BUTTON.edited')}`,
+       '', {
+         duration: 3000,
+         horizontalPosition: 'end'
+       });
+   }
 
-    // CLOSE THE WINDOW
-Close(): void {
+  // CLOSE THE WINDOW
+  Close(): void {
+    if (!this.noteForm.dirty) {
+      this.dialogRef.close();
+    } else if (this.noteForm.dirty && confirm(this.translate.instant('ERROR.DIALOG.confirm'))) {
       this.dialogRef.close();
     }
+}
 
 }

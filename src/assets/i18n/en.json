@@ -149,6 +149,10 @@
   "ERROR": {
     "title": "Oops !",
 
+    "DIALOG": {
+      "confirm": "You have not saved your changes. Are you sure you want to close this window?"
+    },
+
     "RESPONSIVE": {
       "subtitle": "Looks like your screen is too small...",
       "explain": "To use JOBLE optimally, you must log in with a larger screen.",

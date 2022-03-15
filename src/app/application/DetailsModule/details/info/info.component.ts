@@ -42,15 +42,15 @@ export class InfoComponent implements OnInit {
   // OPEN INFO DIALOG
   openInfoDialog(): void {
     if (this.breakpoint.isMatched(Breakpoints.TabletLandscape)) {
-      this.dialog.open(DetailsInfoDialog, { height: '70vh', width: '65%', data : {job : this.job}});
+      this.dialog.open(DetailsInfoDialog, { disableClose: true, height: '70vh', width: '65%', data : {job : this.job}});
     }
 
     if (this.breakpoint.isMatched(Breakpoints.Large)) {
-      this.dialog.open(DetailsInfoDialog, { height: '70vh', width: '60%', data : {job : this.job}});
+      this.dialog.open(DetailsInfoDialog, { disableClose: true, height: '70vh', width: '60%', data : {job : this.job}});
     }
 
     if (this.breakpoint.isMatched(Breakpoints.XLarge)) {
-      this.dialog.open(DetailsInfoDialog, { height: '70vh', width: '50%', data : {job : this.job}});
+      this.dialog.open(DetailsInfoDialog, { disableClose: true, height: '70vh', width: '50%', data : {job : this.job}});
     }
 
 }
@@ -76,8 +76,8 @@ export class DetailsInfoDialog {
     private breakpoint: BreakpointObserver
   ) {}
 
-    // ENUM ICON
-    icon = icon;
+  // ENUM ICON
+  icon = icon;
 
  // BREAKPOINT
   Medium$ = this.breakpoint.observe(Breakpoints.TabletLandscape);
@@ -86,25 +86,25 @@ export class DetailsInfoDialog {
 
   infoForm !: FormGroup;
 
-// STATUS SELECT
-status = [
-  {value : 'history', viewValue: this.translate.instant('JOB.DESCRIPTION.statusWait') },
-{value : 'send', viewValue: this.translate.instant('JOB.DESCRIPTION.statusSend') },
-{value : 'done', viewValue: this.translate.instant('JOB.DESCRIPTION.statusYes') },
-{value : 'clear', viewValue: this.translate.instant('JOB.DESCRIPTION.statusNo') }];
+  // STATUS SELECT
+  status = [
+    {value : 'history', viewValue: this.translate.instant('JOB.DESCRIPTION.statusWait') },
+    {value : 'send', viewValue: this.translate.instant('JOB.DESCRIPTION.statusSend') },
+    {value : 'done', viewValue: this.translate.instant('JOB.DESCRIPTION.statusYes') },
+    {value : 'clear', viewValue: this.translate.instant('JOB.DESCRIPTION.statusNo') }];
 
-selectedStatus = this.status[0].value;
+  selectedStatus = this.status[0].value;
 
-// FAVORITE SELECT
-favs = [
-  {value : true, viewValue: this.translate.instant('BUTTON.add') },
-{value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
+  // FAVORITE SELECT
+  favs = [
+    {value : true, viewValue: this.translate.instant('BUTTON.add') },
+    {value : false, viewValue: this.translate.instant('JOB.DESCRIPTION.favoriteNo') }];
 
-ngOnInit(): void {
+  ngOnInit(): void {
 
-  // INFOFORM
+    // INFOFORM
 
-  this.infoForm = new FormGroup({
+    this.infoForm = new FormGroup({
       favorite : new FormControl(this.data.job.favorite),
       name : new FormControl(this.data.job.name, Validators.required),
       status : new FormControl(this.data.job.status, Validators.required),
@@ -119,6 +119,8 @@ ngOnInit(): void {
       date_1: new FormControl(this.data.job.date_1?.toDate()),
       date_2 : new FormControl(this.data.job.date_2?.toDate())
     });
+
+    this.dialogRef.backdropClick().subscribe(() => this.Close());
 }
 
 // INFO SUBMIT
@@ -161,7 +163,11 @@ ngOnInit(): void {
 
     // CLOSE THE WINDOW
     Close(): void {
-      this.dialogRef.close();
+      if (!this.infoForm.dirty) {
+        this.dialogRef.close();
+      } else if (this.infoForm.dirty && confirm(this.translate.instant('ERROR.DIALOG.confirm'))) {
+        this.dialogRef.close();
+      }
     }
 
 }
