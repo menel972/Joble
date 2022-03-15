@@ -114,7 +114,7 @@ ngOnInit(): void {
       city : new FormControl(this.data.job.city, Validators.maxLength(15)),
       adress : new FormControl(this.data.job.adress),
       contact : new FormControl(this.data.job.contact, Validators.maxLength(15)),
-      tel : new FormControl(this.data.job.tel, Validators.maxLength(10)),
+      tel : new FormControl(this.data.job.tel, Validators.maxLength(14)),
       mail : new FormControl(this.data.job.mail),
       date_1: new FormControl(this.data.job.date_1?.toDate()),
       date_2 : new FormControl(this.data.job.date_2?.toDate())
