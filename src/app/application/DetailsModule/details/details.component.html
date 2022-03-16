@@ -69,7 +69,7 @@
           <h4>{{'JOB.DESCRIPTION.note' | translate | uppercase}} :
             <app-note></app-note>
           </h4>
-          <h6>{{job.note}}</h6>
+          <pre>{{job.note}}</pre>
         </mat-card>
       </article>
 
@@ -87,7 +87,7 @@
             <button mat-button [cdkCopyToClipboard]="job.applicationMessage!" (click)='openSnackBar()'>{{'BUTTON.copy' |
               translate | titlecase}} <mat-icon>{{icon.copy}}</mat-icon></button>
           </article>
-          <p id='message'>{{job.applicationMessage}}</p>
+          <pre id='message'>{{job.applicationMessage}}</pre>
         </article>
       </mat-card>
 

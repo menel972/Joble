@@ -128,7 +128,7 @@
       flex: 40%;
       margin: 0 0 1vh 1vh;
 
-      h6 {
+      pre {
         font-family: 'Mali', cursive;
         box-sizing: border-box;
         margin-top: 0.5vh;
@@ -205,7 +205,8 @@
           overflow: scroll;
         }
 
-        p {
+        p,
+        pre {
           flex: 90%;
           box-sizing: border-box;
           letter-spacing: 0.1vh;
