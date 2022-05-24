@@ -15,9 +15,9 @@ You can easily <strong>add, update and remove</strong> companies or offers and a
 </p>
 
 <p align="center">
-  <img src="screenshots/Screenshot_1.png" height="500" title="landing page">
-  <img src="screenshots/Screenshot_2.png" height="500" title="presentation">
-  <img src="screenshots/Screenshot_3.png" height="500" title="detailed view">
+  <img src="screenshots/Screenshot_1.png" height="350" title="landing page">
+  <img src="screenshots/Screenshot_2.png" height="350" title="presentation">
+  <img src="screenshots/Screenshot_3.png" height="350" title="detailed view">
 </p>
 
 
@@ -35,6 +35,6 @@ Clone this repo : https://github.com/menel972/Joble.git
 
 run :
 
-$ npm i
+$ npm install
 
 $ ng serve
