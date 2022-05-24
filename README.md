@@ -1,27 +1,40 @@
-# Joble
+# About JOBLE website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
+I made this tool with Angular and Firebase to to make job researches simplier !
 
-## Development server
+You can easily <strong>add, update and remove</strong> companies or offers and also <strong>track</strong> your applications.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<p align="center">
+  <img alt="Angular" src="https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white" />
+  <img alt="RxJS" src="https://img.shields.io/badge/-RxJs-B7178C?style=flat-square&logo=reactivex&logoColor=white" />
+  <img alt="Firebase" src="https://img.shields.io/badge/Firebase-D19222?style=flat-square&logo=firebase&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-FFCC00?style=flat-square&logo=javascript&logoColor=white" />
+  <img alt="html5" src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" />
+  <img alt="Sass" src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=sass&logoColor=white" />
+</p>
 
-## Code scaffolding
+<p align="center">
+  <img src="screenshots/Screenshot_1.png" height="350" title="landing page">
+  <img src="screenshots/Screenshot_2.png" height="350" title="presentation">
+  <img src="screenshots/Screenshot_3.png" height="350" title="detailed view">
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting Started
 
-## Running unit tests
+To get a local copy up and running follow these simple steps.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
 
-## Running end-to-end tests
+This project run with Angular 13.2.2 and rxjs 7.5.4
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Install
+Clone this repo : https://github.com/menel972/Joble.git
 
-## Further help
+run :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+$ npm install
+
+$ ng serve
