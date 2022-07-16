@@ -17,7 +17,7 @@
   },
   "prettier.useTabs": true,
   "json.maxItemsComputed": 50000,
-  "workbench.colorTheme": "Angular Dark Theme",
+  "workbench.colorTheme": "Visual Studio Dark - C++",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
